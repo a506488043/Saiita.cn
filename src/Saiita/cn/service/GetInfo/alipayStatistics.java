@@ -6,7 +6,7 @@ import org.apache.commons.logging.LogFactory;
 import com.mysql.jdbc.Connection;
 
 import Saiita.cn.entity.alipayStatisticsInfo;
-import Saiita.cn.service.Log.LogRecord;
+import Saiita.cn.service.GetInfo.Log.LogRecord;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;

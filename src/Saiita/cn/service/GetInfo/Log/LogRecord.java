@@ -1,4 +1,4 @@
-package Saiita.cn.service.Log;
+package Saiita.cn.service.GetInfo.Log;
 
 import java.sql.PreparedStatement;
 import java.sql.SQLException;

@@ -19,7 +19,7 @@ public class GetSystemTime {
 		return sdf.format(date);
 	}
 
-	public long GetSyetemTimes() {
+	public static long GetSyetemTimes() {
 		logger.info("获取系统时间");
 		return System.currentTimeMillis();
 	}

@@ -13,9 +13,9 @@ import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 
 import Saiita.cn.annotation.RSA;
+import Saiita.cn.service.GetInfo.Log.LogRecord;
 import Saiita.cn.service.GetSystemInformation.Browser;
 import Saiita.cn.service.GetSystemInformation.GetSystemTime;
-import Saiita.cn.service.Log.LogRecord;
 import Saiita.cn.service.Login.CheckLoginInfo;
 
 /**
@@ -61,11 +61,11 @@ public class LoginPost extends HttpServlet {
 		// 获取登录框的数据，用户名和密码
 		String username = request.getParameter("username");
 		String password = request.getParameter("user_psw");
+		String browser = getBrowser.getBrowserName(request.getHeader("User-Agent"));
 		try {
 			if (password == "0000" || password.equals("0000")) {
 				logger.error("用户名或密码为空！");
-				String browser = getBrowser.getBrowserName(request.getHeader("User-Agent"));
-				log.logrecorc(username, getSystemTime.GetSyetemTimes(), "用户登陆", "登陆失败，用户名或密码为空", "1",
+				log.logrecorc(username, GetSystemTime.GetSyetemTimes(), "用户登陆", "登陆失败，用户名或密码为空", "1",
 						request.getRemoteAddr(), browser, request.getHeader("User-Agent"));
 				response.sendRedirect("login.jsp");
 			} else {
@@ -78,6 +78,13 @@ public class LoginPost extends HttpServlet {
 					// 这个不能删，用于用户判断是否登陆，没登陆拦截。
 					session.setAttribute("result", result);
 					session.setAttribute("username", username);
+					//ip
+					session.setAttribute("ip", request.getRemoteAddr());
+					//浏览器
+					session.setAttribute("browser", browser);
+					//浏览器原始信息
+					session.setAttribute("browserType", request.getHeader("User-Agent"));
+					
 					if (result.equals("Success")) {
 						logger.info("登陆成功");
 						response.sendRedirect("main.jsp");

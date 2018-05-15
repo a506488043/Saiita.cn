@@ -109,7 +109,7 @@ public class ParameterSafetyCheck extends HttpServletRequestWrapper {
 	 */
 	@Override
 	public String getHeader(String name) {
-		logger.info("0");
+		logger.info("getHeader");
 		String value = super.getHeader(name);
 		if (value == null) {
 			return null;

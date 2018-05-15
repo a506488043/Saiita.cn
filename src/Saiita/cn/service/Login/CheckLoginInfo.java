@@ -9,9 +9,9 @@ import org.apache.commons.logging.LogFactory;
 import com.mysql.jdbc.Connection;
 import Saiita.cn.JDBC.JDBC;
 import Saiita.cn.service.GetInfo.getAllUserInfo;
+import Saiita.cn.service.GetInfo.Log.LogRecord;
 import Saiita.cn.service.GetSystemInformation.Browser;
 import Saiita.cn.service.GetSystemInformation.GetSystemTime;
-import Saiita.cn.service.Log.LogRecord;
 
 public class CheckLoginInfo {
 	static JDBC jdbc = new JDBC();

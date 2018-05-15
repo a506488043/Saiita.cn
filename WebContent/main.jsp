@@ -360,15 +360,15 @@
 							class="fa fa-circle-o"></i> Inline charts</a></li>
 				</ul></li>
 			<li class="treeview"><a href="#"> <i class="fa fa-laptop"></i>
-					<span>UI Elements</span> <span class="pull-right-container">
+					<span>日志管理</span> <span class="pull-right-container">
 						<i class="fa fa-angle-left pull-right"></i>
 				</span>
 			</a>
 				<ul class="treeview-menu">
 					<li><a href="pages/UI/general.html"><i
-							class="fa fa-circle-o"></i> General</a></li>
+							class="fa fa-circle-o"></i>登陆日志</a></li>
 					<li><a href="pages/UI/icons.html"><i
-							class="fa fa-circle-o"></i> Icons</a></li>
+							class="fa fa-circle-o"></i>系统日志</a></li>
 					<li><a href="pages/UI/buttons.html"><i
 							class="fa fa-circle-o"></i> Buttons</a></li>
 					<li><a href="pages/UI/sliders.html"><i
