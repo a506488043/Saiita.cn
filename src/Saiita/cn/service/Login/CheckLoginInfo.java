@@ -28,7 +28,7 @@ public class CheckLoginInfo {
 		// 连接数据库
 		Connection getConnetcion = (Connection) jdbc.getConnection();
 		// 输入用户名查询密码等信息
-		String sql = "SELECT * from user where User=?";
+		String sql = "SELECT * from user where username=?";
 		PreparedStatement pstmt = null;
 		// 获取系统时间，设置日期格式
 		GetSystemTime systemtime = new GetSystemTime();

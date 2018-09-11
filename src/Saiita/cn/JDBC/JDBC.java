@@ -9,12 +9,12 @@ import org.apache.commons.logging.LogFactory;
 public class JDBC {
 	public static Log logger = LogFactory.getLog(JDBC.class);
 	// MySQLµÄÊý¾Ý¿â
-	String database = "Saiyintai";
-	private String url = "jdbc:mysql://192.168.31.105:3306/" + database;
-	private String Ubuntu = "jdbc:mysql://localhost:3306/" + database;
-	private String username = "root";
-	private String UbuntuPwd = "123456789";
-	private String password = "123456789";
+	String database = "saiita.cn";
+	private String url = "jdbc:mysql://39.105.51.6:3306/" + database;
+	private String Ubuntu = "jdbc:mysql://39.105.51.6:3306/" + database;
+	private String username = "saiita";
+	private String UbuntuPwd = "saiita";
+	private String password = "BQKgJlKOSnVXJYwF";
 	Connection conn;
 
 	public Connection getConnection() {

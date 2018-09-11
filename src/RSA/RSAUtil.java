@@ -34,7 +34,7 @@ import Saiita.cn.service.GetSystemInformation.SystemType;
 public class RSAUtil {
 	public static Log logger = LogFactory.getLog(RSAUtil.class);
 	private static String Ubuntu = "/var/www/RSA/RSAKey.txt";
-	private static String RSAKeyStore = "e://RSAKey.txt";
+	private static String RSAKeyStore = "d://RSAKey.txt";
 
 	/**
 	 * * …˙≥…√‹‘ø∂‘ *
