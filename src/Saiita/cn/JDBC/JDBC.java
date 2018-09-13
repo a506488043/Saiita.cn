@@ -10,8 +10,9 @@ public class JDBC {
 	public static Log logger = LogFactory.getLog(JDBC.class);
 	// MySQL的数据库
 	String database = "saiita.cn";
-	private String url = "jdbc:mysql://39.105.51.6:3306/" + database;
-	private String Ubuntu = "jdbc:mysql://39.105.51.6:3306/" + database;
+	String utf8 = "?useUnicode=true&characterEncoding=utf8";
+	private String url = "jdbc:mysql://39.105.51.6:3306/" + database+utf8;
+	private String Ubuntu = "jdbc:mysql://39.105.51.6:3306/" + database+utf8;
 	private String username = "saiita";
 	private String UbuntuPwd = "saiita";
 	private String password = "BQKgJlKOSnVXJYwF";
@@ -22,7 +23,7 @@ public class JDBC {
 			Class.forName("com.mysql.jdbc.Driver");
 			logger.info("数据库加载成功");
 		} catch (Exception e) {
-			logger.error("数据库加载失败"+"/n"+e);
+			logger.error("数据库加载失败" + "/n" + e);
 		}
 		try {
 			conn = DriverManager.getConnection(url, username, password);
@@ -34,7 +35,7 @@ public class JDBC {
 				logger.info("方式2连接数据库成功！");
 			} catch (SQLException e1) {
 				// TODO Auto-generated catch block
-				logger.error("方式1：连接失败"+"/n"+"方式2：连接失败");
+				logger.error("方式1：连接失败" + "/n" + "方式2：连接失败");
 				logger.error("请检查连接数据库账号，IP，端口是否正确！");
 				logger.error(e1);
 			}

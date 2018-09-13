@@ -33,9 +33,9 @@ public class getAllUserInfo {
 			while (rs.next()) {
 				SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 				UserInfo User = new UserInfo();
-				User.setId(rs.getInt("Id"));
+				User.setId(rs.getInt("id"));
 				User.setRole(rs.getInt("role"));
-				User.setUsername(rs.getString("User"));
+				User.setUsername(rs.getString("username"));
 				User.setPassword(rs.getString("password"));
 				User.setLoginfailure(rs.getInt("Loginfailure"));
 				User.setLoginSuccess(rs.getInt("LoginSuccess"));

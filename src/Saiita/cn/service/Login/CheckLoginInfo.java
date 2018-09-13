@@ -52,7 +52,7 @@ public class CheckLoginInfo {
 					// 成功一次，LoginSuccess次数增加一次
 					int count = ++Loginsuccess;
 					logger.info("登陆成功次数:" + Loginsuccess);
-					String lastLoginTime = "update user set LoginSuccess =? ,Lastlogintime =? , LoginSuccessDate=? where User =?";
+					String lastLoginTime = "update user set LoginSuccess =? ,Lastlogintime =? , LoginSuccessDate=? where username =?";
 					pstmt = getConnetcion.prepareStatement(lastLoginTime);
 					pstmt.setInt(1, count);
 					pstmt.setLong(2, l);
@@ -73,7 +73,7 @@ public class CheckLoginInfo {
 					int count = ++Loginfailed;
 					// 获取登陆失败时的系统时间。
 					logger.info("登陆失败次数:" + Loginfailed + "," + "用户名或密码错误");
-					String LoginCountSql = "update user set  Loginfailure=? , LoginfailureDate=? where User =?";
+					String LoginCountSql = "update user set  Loginfailure=? , LoginfailureDate=? where username =?";
 					pstmt = getConnetcion.prepareStatement(LoginCountSql);
 					pstmt.setInt(1, count);
 					pstmt.setLong(2, l);
