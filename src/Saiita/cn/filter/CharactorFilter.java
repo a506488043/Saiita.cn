@@ -31,7 +31,7 @@ public class CharactorFilter implements Filter {
 	 */
 	public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain)
 			throws IOException, ServletException {
-		logger.info("×Ö·û±àÂë×ª»»(UTF-8)");
+		//logger.info("×Ö·û±àÂë×ª»»(UTF-8)");
 		// TODO Auto-generated method stub
 		// place your code here
 		if (encoding != null) {
@@ -47,7 +47,7 @@ public class CharactorFilter implements Filter {
 	 */
 	public void init(FilterConfig fConfig) throws ServletException {
 		// TODO Auto-generated method stub
-		logger.info("×Ö·û±àÂë×ª»»(UTF-8),³õÊ¼»¯");
+		//logger.info("×Ö·û±àÂë×ª»»(UTF-8),³õÊ¼»¯");
 		encoding = fConfig.getInitParameter("encoding");
 	}
 

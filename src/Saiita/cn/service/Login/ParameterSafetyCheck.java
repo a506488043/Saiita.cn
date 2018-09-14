@@ -65,7 +65,7 @@ public class ParameterSafetyCheck extends HttpServletRequestWrapper {
 	 */
 	@Override
 	public String[] getParameterValues(String name) {
-		logger.info("对数组参数进行特殊字符过滤");
+		//logger.info("对数组参数进行特殊字符过滤");
 		String[] values = super.getParameterValues(name);
 		if (values == null) {
 			return null;
@@ -83,7 +83,7 @@ public class ParameterSafetyCheck extends HttpServletRequestWrapper {
 	 */
 	@Override
 	public String getParameter(String name) {
-		logger.info("对参数中特殊字符进行过滤");
+		//logger.info("对参数中特殊字符进行过滤");
 		String value = super.getParameter(name);
 		if (value == null) {
 			return null;
@@ -96,7 +96,7 @@ public class ParameterSafetyCheck extends HttpServletRequestWrapper {
 	 */
 	@Override
 	public Object getAttribute(String name) {
-		logger.info("获取attribute,特殊字符过滤");
+		//logger.info("获取attribute,特殊字符过滤");
 		Object value = super.getAttribute(name);
 		if (value != null && value instanceof String) {
 			cleanXSS((String) value);
@@ -109,7 +109,7 @@ public class ParameterSafetyCheck extends HttpServletRequestWrapper {
 	 */
 	@Override
 	public String getHeader(String name) {
-		logger.info("getHeader");
+		//logger.info("getHeader");
 		String value = super.getHeader(name);
 		if (value == null) {
 			return null;
