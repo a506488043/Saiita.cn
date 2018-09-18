@@ -29,6 +29,10 @@ public class Browser {
 				|| type.equals("MQQBrowser") || type.equals("")) {
 			if (agent.indexOf("UCBrowser") > 0) {
 				return type + "/" + "UCä¯ÀÀÆ÷";
+			}else if (agent.indexOf("TIM") > 0) {
+				return type + "/" + "TIM";
+			} else if (agent.indexOf("QQ") > 0) {
+				return type + "/" + "QQ";
 			} else if (agent.indexOf("SogouMobileBrowser") > 0) {
 				return type + "/" + "ËÑ¹·ä¯ÀÀÆ÷";
 			}else if(agent.indexOf("MQQBrowser") > 0) {
