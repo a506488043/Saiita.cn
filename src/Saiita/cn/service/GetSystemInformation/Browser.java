@@ -31,8 +31,10 @@ public class Browser {
 				return type + "/" + "UCä¯ÀÀÆ÷";
 			} else if (agent.indexOf("SogouMobileBrowser") > 0) {
 				return type + "/" + "ËÑ¹·ä¯ÀÀÆ÷";
-			}else if (agent.indexOf("Safari") > 0) {
-				return type + "/" + "Æ»¹ûä¯ÀÀÆ÷";
+			}else if(agent.indexOf("MQQBrowser") > 0) {
+				return type + "/" + "Î¢ĞÅ";
+			}else if(agent.indexOf("XiaoMi") > 0) {
+				return type + "/" + "Ğ¡Ã×ä¯ÀÀÆ÷";
 			}else if (agent.indexOf("QihooBrowser") > 0) {
 				return type + "/" + "360ä¯ÀÀÆ÷";
 			}else if (agent.indexOf("baidubrowser") > 0) {
@@ -41,6 +43,8 @@ public class Browser {
 				return type + "/" + "Opera Miniä¯ÀÀÆ÷";
 			}else if (agent.indexOf("OPR") > 0) {
 				return type + "/" + "Operaä¯ÀÀÆ÷";
+			}else if (agent.indexOf("Safari") > 0) {
+				return type + "/" + "Æ»¹ûä¯ÀÀÆ÷";
 			}
 			return type;
 		} else {
