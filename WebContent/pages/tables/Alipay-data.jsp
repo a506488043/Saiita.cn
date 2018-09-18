@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@page import="Saiita.cn.service.GetInfo.getAllUserInfo"%>
-<%@page import="Saiita.cn.entity.UserInfo"%>
+<%@page import="Saiita.cn.service.GetInfo.getAllAlpayInfo"%>
+<%@page import="Saiita.cn.entity.alipayInfo"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="java.util.List"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -37,98 +37,91 @@
   <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
   <![endif]-->
 </head>
-<script type="text/javascript" src="bootstrap/js/jquery.js"></script>
-<script type="text/javascript">
-	function GetAllAlpayInfo() {
-		$.ajax({
-			type : 'get',
-			url : 'GetAllAlpayInfo',
-			//data:'',
-			dataType : 'json',
-			timeout : 1000,
-			success : function(data) {
-				$.each(data,function(i,list){
-					//alert($("#name").val(list.id));
-					$("#GetAllAlpayInfo").append("<tr>")
-					.append("<td>"+list.id+"</td>")
-					.append("<td>"+list.tradeNumber+"</td>")
-					.append("</tr>");
-				})
-			},
-	        error: function (jqXHR, textStatus, errorThrown) {
-	            alert("获取失败");
-	        }
-		})
-	}
-</script>
-<body class="hold-transition skin-blue sidebar-mini"
-	onload=GetAllAlpayInfo()>
-	<form>
-		<div class="box">
-			<div class="box-header">
-				<h3 class="box-title">用户数据</h3>
-			</div>
-			<!-- /.box-header -->
-			<div class="box-body">
-				<table id="example1" class="table table-bordered table-striped">
-					<thead>
+<body class="hold-transition skin-blue sidebar-mini">
+	<div class="row">
+		<div class="col-xs-12">
+			<div class="box">
+				<div class="box-header">
+					<h3 class="box-title">支付宝</h3>
+				</div>
+				<!-- /.box-header -->
+				<div class="box-body">
+					<table id="example2" class="table table-bordered table-striped">
+						<thead>
 						<tr>
-							<th>交易号</th>
-							<th>商户订单号</th>
+							<th>ID</th>
+							<th>付款时间</th>
+							<th>最近修改时间</th>
+							<th>交易来源地</th>
+							<th>类型</th>
+							<th>交易对方</th>
+							<th>商品名称</th>
+							<th>金额</th>
+							<th>收/支</th>
+							<th>交易状态</th>
+							<th>成功退款</th>
+							<th>备注</th>
 						</tr>
-					</thead>
-					<tbody id="GetAllAlpayInfo">
-						<!-- <tr></tr> -->
+						</thead>
+						<tbody>
+					<%
+					List<alipayInfo> list = getAllAlpayInfo.getAllAlpayInfo();
+					for(int i=0;i<list.size();i++){
+						alipayInfo alipay=list.get(i);
+					%>
+					<tr>
+					<td><%=alipay.getId() %></td>
+					<td><%=alipay.getPaymentTime() %></td>
+					<td><%=alipay.getRecentModificationTime() %></td>
+					<td><%=alipay.getSourceTransation() %></td>
+					<td><%=alipay.getType() %></td>
+					<td><%=alipay.getTheDealingParty() %></td>
+					<td><%=alipay.getCommodityName() %></td>
+					<td><%=alipay.getAmount() %></td>
+					<td><%=alipay.getBalanceOfPayments() %></td>
+					<td><%=alipay.getTransationStatus() %></td>
+					<td><%=alipay.getSuccessfulRefund() %></td>
+					<td><%=alipay.getRemark() %></td>
+					</tr>
+					<% 
+					}
+					%>
 					</tbody>
-				</table>
-				<div class="overlay" id="divprogressbar">
-					<i class="fa fa-refresh fa-spin"></i>
+					</table>
 				</div>
 			</div>
-			<!-- /.box-body -->
 		</div>
-		<!-- /.box -->
-		<!-- Add the sidebar's background. This div must be placed
-       immediately after the control sidebar -->
-		<div class="control-sidebar-bg"></div>
+	</div>
+	<div class="control-sidebar-bg"></div>
 
-		<!-- jQuery 2.2.3 -->
-		<script src="../../plugins/jQuery/jquery-2.2.3.min.js"></script>
-		<!-- Bootstrap 3.3.6 -->
-		<script src="../../bootstrap/js/bootstrap.min.js"></script>
-		<!-- DataTables -->
-		<script src="../../plugins/datatables/jquery.dataTables.min.js"></script>
-		<script src="../../plugins/datatables/dataTables.bootstrap.min.js"></script>
-		<!-- SlimScroll -->
-		<script src="../../plugins/slimScroll/jquery.slimscroll.min.js"></script>
-		<!-- FastClick -->
-		<script src="../../plugins/fastclick/fastclick.js"></script>
-		<!-- AdminLTE App -->
-		<script src="../../dist/js/app.min.js"></script>
-		<!-- AdminLTE for demo purposes -->
-		<script src="../../dist/js/demo.js"></script>
-		<!-- page script -->
-		<script type="text/javascript" language="JavaScript">
-			//: 判断网页是否加载完成   
-			document.onreadystatechange = function() {
-				if (document.readyState == "complete") {
-					document.getElementById('divprogressbar').style.display = 'none';
-				}
-			}
-		</script>
-		<script>
-			$(function() {
-				$("#example1").DataTable();
-				$('#example2').DataTable({
-					"paging" : true,
-					"lengthChange" : true,
-					"searching" : true,
-					"ordering" : true,
-					"info" : true,
-					"autoWidth" : true
-				});
+	<!-- jQuery 2.2.3 -->
+	<script src="../../plugins/jQuery/jquery-2.2.3.min.js"></script>
+	<!-- Bootstrap 3.3.6 -->
+	<script src="../../bootstrap/js/bootstrap.min.js"></script>
+	<!-- DataTables -->
+	<script src="../../plugins/datatables/jquery.dataTables.min.js"></script>
+	<script src="../../plugins/datatables/dataTables.bootstrap.min.js"></script>
+	<!-- SlimScroll -->
+	<script src="../../plugins/slimScroll/jquery.slimscroll.min.js"></script>
+	<!-- FastClick -->
+	<script src="../../plugins/fastclick/fastclick.js"></script>
+	<!-- AdminLTE App -->
+	<script src="../../dist/js/app.min.js"></script>
+	<!-- AdminLTE for demo purposes -->
+	<script src="../../dist/js/demo.js"></script>
+	<!-- page script -->
+	<script>
+		$(function() {
+			$("#example1").DataTable();
+			$('#example2').DataTable({
+				"paging" : true,
+				"lengthChange" : true,
+				"searching" : true,
+				"ordering" : true,
+				"info" : true,
+				"autoWidth" : true
 			});
-		</script>
-	</form>
+		});
+	</script>
 </body>
 </html>
