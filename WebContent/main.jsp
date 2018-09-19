@@ -483,6 +483,7 @@
 			<li><a href="#control-sidebar-settings-tab" data-toggle="tab"><i
 					class="fa fa-gears"></i></a></li>
 		</ul>
+		
 		<!-- Tab panes -->
 		<div class="tab-content">
 			<!-- Home tab content -->
