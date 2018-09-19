@@ -24,7 +24,7 @@ public class getAllUserInfo {
 	public static List<UserInfo> getAllUserInfo() {
 		logger.info("获取User表所有用户数据");
 		Connection getConnetcion = (Connection) jdbc.getConnection();
-		String sql = "SELECT* from user ";
+		String sql = "SELECT* from user  ";
 		PreparedStatement pstmt;
 		List<UserInfo> getUserInfoList = new ArrayList<UserInfo>();
 		try {

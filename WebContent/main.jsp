@@ -344,6 +344,17 @@
 					<li><a href="pages/tables/My-Bank-data.jsp" target="mainFrame"><i
 							class="fa fa-circle-o"></i> 网商银行账单</a></li>
 				</ul></li>
+			<li class="treeview"><a href="#"> <i class="fa fa-th"></i> <span>日志管理</span>
+					<span class="pull-right-container"> <span
+						class="label label-primary pull-right">2</span>
+				</span>
+			</a>
+				<ul class="treeview-menu">
+					<li><a href="pages/tables/Loginlog.jsp"
+						target="mainFrame"><i class="fa fa-circle-o"></i> 登陆日志</a></li>
+					<li><a href="pages/tables/jingdong-data.jsp"
+						target="mainFrame"><i class="fa fa-circle-o"></i> 操作日志</a></li>
+				</ul></li>
 			<li class="treeview"><a href="#"> <i class="fa fa-pie-chart"></i>
 					<span>Charts</span> <span class="pull-right-container"> <i
 						class="fa fa-angle-left pull-right"></i>
@@ -358,25 +369,6 @@
 							class="fa fa-circle-o"></i> Flot</a></li>
 					<li><a href="pages/charts/inline.html"><i
 							class="fa fa-circle-o"></i> Inline charts</a></li>
-				</ul></li>
-			<li class="treeview"><a href="#"> <i class="fa fa-laptop"></i>
-					<span>日志管理</span> <span class="pull-right-container">
-						<i class="fa fa-angle-left pull-right"></i>
-				</span>
-			</a>
-				<ul class="treeview-menu">
-					<li><a href="pages/UI/general.html"><i
-							class="fa fa-circle-o"></i>登陆日志</a></li>
-					<li><a href="pages/UI/icons.html"><i
-							class="fa fa-circle-o"></i>系统日志</a></li>
-					<li><a href="pages/UI/buttons.html"><i
-							class="fa fa-circle-o"></i> Buttons</a></li>
-					<li><a href="pages/UI/sliders.html"><i
-							class="fa fa-circle-o"></i> Sliders</a></li>
-					<li><a href="pages/UI/timeline.html"><i
-							class="fa fa-circle-o"></i> Timeline</a></li>
-					<li><a href="pages/UI/modals.html"><i
-							class="fa fa-circle-o"></i> Modals</a></li>
 				</ul></li>
 			<li class="treeview"><a href="#"> <i class="fa fa-edit"></i>
 					<span>Forms</span> <span class="pull-right-container"> <i

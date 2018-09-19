@@ -103,7 +103,7 @@ public class LoginPost extends HttpServlet {
 				}
 			}
 		} catch (Exception e) {
-			logger.info("RSA文件不存在。" + "\n" + e.getMessage());
+			logger.error("RSA文件不存在。" + "\n" + e.getMessage());
 			response.sendRedirect("login.jsp");
 		}
 	}

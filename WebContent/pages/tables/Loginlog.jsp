@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@page import="Saiita.cn.service.GetInfo.getAllAlpayInfo"%>
-<%@page import="Saiita.cn.entity.alipayInfo"%>
+<%@page import="Saiita.cn.service.GetInfo.getSafetyLog"%>
+<%@page import="Saiita.cn.entity.SafeLog"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="java.util.List"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -42,55 +42,50 @@
 		<div class="col-xs-12">
 			<div class="box">
 				<div class="box-header">
-					<h3 class="box-title">支付宝</h3>
+					<h3 class="box-title">登陆日志</h3>
 				</div>
 				<!-- /.box-header -->
 				<div class="box-body">
 					<table id="example2" class="table table-bordered table-striped">
 						<thead>
-						<tr>
-							<th>ID</th>
-							<th>付款时间</th>
-							<!--<th>最近修改时间</th>-->
-							<th>交易来源地</th>
-							<!--<th>类型</th>-->
-							<th>交易对方</th>
-							<th>商品名称</th>
-							<th>金额</th>
-							<th>收/支</th>
-							<th>交易状态</th>
-							<!--<th>成功退款</th>-->
-						</tr>
+							<tr>
+								<!-- <th>Id</th>-->
+								<th>用户名</th>
+								<th>登陆时间</th>
+								<th>结果</th>
+								<th>登陆IP</th>
+								<th>浏览器类型</th>
+							</tr>
 						</thead>
 						<tbody>
-						
-					<%
-					List<alipayInfo> list = getAllAlpayInfo.getAllAlpayInfo();
-					for(int i=0;i<list.size();i++){
-						alipayInfo alipay=list.get(i);
-					%>
-					<tr>
-					<td><%=alipay.getId() %></td>
-					<!-- <td><%=alipay.getPaymentTime() %></td>-->
-					<td><%=alipay.getRecentModificationTime() %></td>
-					<td><%=alipay.getSourceTransation() %></td>
-					<!-- <td><%=alipay.getType() %></td>-->
-					<td><%=alipay.getTheDealingParty() %></td>
-					<td><%=alipay.getCommodityName() %></td>
-					<td><%=alipay.getAmount() %></td>
-					<td><%=alipay.getBalanceOfPayments() %></td>
-					<td><%=alipay.getTransationStatus() %></td>
-					<!--  <td><%=alipay.getSuccessfulRefund() %></td>-->
-					</tr>
-					<% 
-					}
-					%>
-					</tbody>
+							<%
+								List<SafeLog> list = getSafetyLog.getLogInfo();
+								for (int i = 0; i < list.size(); i++) {
+									SafeLog log = (SafeLog) list.get(i);
+							%>
+							<tr>
+								<!--  <td><%=log.getId()%></td>-->
+								<td><%=log.getUsername()%></td>
+								<td><%=log.getDatetime()%></td>
+								<td><%=log.getResult()%></td>
+								<td><%=log.getIp()%></td>
+								<td><%=log.getBrowser()%></td>
+							</tr>
+							<%
+								}
+							%>
+						</tbody>
 					</table>
 				</div>
+				<!-- /.box-body -->
 			</div>
+			<!-- /.box -->
 		</div>
+		<!-- /.col -->
 	</div>
+	<!-- /.box -->
+	<!-- Add the sidebar's background. This div must be placed
+       immediately after the control sidebar -->
 	<div class="control-sidebar-bg"></div>
 
 	<!-- jQuery 2.2.3 -->
@@ -114,11 +109,11 @@
 			$("#example1").DataTable();
 			$('#example2').DataTable({
 				"paging" : true,
-				"lengthChange" : false,
+				"lengthChange" : true,
 				"searching" : true,
 				"ordering" : true,
 				"info" : true,
-				"autoWidth" : false
+				"autoWidth" : true
 			});
 		});
 	</script>
