@@ -45,38 +45,43 @@
 					<h3 class="box-title">登陆日志</h3>
 				</div>
 				<!-- /.box-header -->
-				<div class="box-body">
-					<table id="example2" class="table table-bordered table-striped">
-						<thead>
-							<tr>
-								<!-- <th>Id</th>-->
-								<th>用户名</th>
-								<th>登陆时间</th>
-								<th>结果</th>
-								<th>登陆IP</th>
-								<th>浏览器类型</th>
-							</tr>
-						</thead>
-						<tbody>
-							<%
-								List<SafeLog> list = getSafetyLog.getLogInfo();
-								for (int i = 0; i < list.size(); i++) {
-									SafeLog log = (SafeLog) list.get(i);
-							%>
-							<tr>
-								<!--  <td><%=log.getId()%></td>-->
-								<td><%=log.getUsername()%></td>
-								<td><%=log.getDatetime()%></td>
-								<td><%=log.getResult()%></td>
-								<td><%=log.getIp()%></td>
-								<td><%=log.getBrowser()%></td>
-							</tr>
-							<%
-								}
-							%>
-						</tbody>
-					</table>
+				<div class="overlay" id="divprogressbar">
+					<i class="fa fa-refresh fa-spin">
+					</i>
 				</div>
+						<div class="box-body">
+						
+							<table id="example2" class="table table-bordered table-striped">
+								<thead>
+									<tr>
+										<!-- <th>Id</th>-->
+										<th>登陆时间</th>
+										<th>用户名</th>
+										<th>结果</th>
+										<th>登陆IP</th>
+										<th>浏览器类型</th>
+									</tr>
+								</thead>
+								<tbody>
+									<%
+										List<SafeLog> list = getSafetyLog.getLogInfo();
+										for (int i = 0; i < list.size(); i++) {
+											SafeLog log = (SafeLog) list.get(i);
+									%>
+									<tr>
+										<!--  <td><%=log.getId()%></td>-->
+										<td><%=log.getDatetime()%></td>
+										<td><%=log.getUsername()%></td>
+										<td><%=log.getResult()%></td>
+										<td><%=log.getIp()%></td>
+										<td><%=log.getBrowser()%></td>
+									</tr>
+									<%
+										}
+									%>
+								</tbody>
+							</table>
+						</div>
 				<!-- /.box-body -->
 			</div>
 			<!-- /.box -->
@@ -116,6 +121,14 @@
 				"autoWidth" : true
 			});
 		});
+	</script>
+	<script type="text/javascript" language="JavaScript">
+		//: 判断网页是否加载完成   
+		document.onreadystatechange = function() {
+			if (document.readyState == "complete") {
+				document.getElementById('divprogressbar').style.display = 'none';
+			}
+		}
 	</script>
 </body>
 </html>

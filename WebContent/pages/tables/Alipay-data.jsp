@@ -45,54 +45,49 @@
 					<h3 class="box-title">支付宝</h3>
 				</div>
 				<!-- /.box-header -->
+				<div class="overlay" id="divprogressbar">
+					<i class="fa fa-refresh fa-spin"> </i>
+				</div>
 				<div class="box-body">
 					<table id="example2" class="table table-bordered table-striped">
 						<thead>
-						<tr>
-							<th>ID</th>
-							<th>付款时间</th>
-							<!--<th>最近修改时间</th>-->
-							<th>交易来源地</th>
-							<!--<th>类型</th>-->
-							<th>交易对方</th>
-							<th>商品名称</th>
-							<th>金额</th>
-							<th>收/支</th>
-							<th>交易状态</th>
-							<!--<th>成功退款</th>-->
-						</tr>
+							<tr>
+								<th>ID</th>
+								<th>付款时间</th>
+								<th>交易来源地</th>
+								<th>交易对方</th>
+								<th>商品名称</th>
+								<th>金额</th>
+								<th>收/支</th>
+								<th>交易状态</th>
+							</tr>
 						</thead>
 						<tbody>
-						
-					<%
-					List<alipayInfo> list = getAllAlpayInfo.getAllAlpayInfo();
-					for(int i=0;i<list.size();i++){
-						alipayInfo alipay=list.get(i);
-					%>
-					<tr>
-					<td><%=alipay.getId() %></td>
-					<!-- <td><%=alipay.getPaymentTime() %></td>-->
-					<td><%=alipay.getRecentModificationTime() %></td>
-					<td><%=alipay.getSourceTransation() %></td>
-					<!-- <td><%=alipay.getType() %></td>-->
-					<td><%=alipay.getTheDealingParty() %></td>
-					<td><%=alipay.getCommodityName() %></td>
-					<td><%=alipay.getAmount() %></td>
-					<td><%=alipay.getBalanceOfPayments() %></td>
-					<td><%=alipay.getTransationStatus() %></td>
-					<!--  <td><%=alipay.getSuccessfulRefund() %></td>-->
-					</tr>
-					<% 
-					}
-					%>
-					</tbody>
+							<%
+								List<alipayInfo> list = getAllAlpayInfo.getAllAlpayInfo();
+								for (int i = 0; i < list.size(); i++) {
+									alipayInfo alipay = list.get(i);
+							%>
+							<tr>
+								<td><%=alipay.getId()%></td>
+								<td><%=alipay.getRecentModificationTime()%></td>
+								<td><%=alipay.getSourceTransation()%></td>
+								<td><%=alipay.getTheDealingParty()%></td>
+								<td><%=alipay.getCommodityName()%></td>
+								<td><%=alipay.getAmount()%></td>
+								<td><%=alipay.getBalanceOfPayments()%></td>
+								<td><%=alipay.getTransationStatus()%></td>
+							</tr>
+							<%
+								}
+							%>
+						</tbody>
 					</table>
 				</div>
 			</div>
+			<!-- BOX -->
 		</div>
 	</div>
-	<div class="control-sidebar-bg"></div>
-
 	<!-- jQuery 2.2.3 -->
 	<script src="../../plugins/jQuery/jquery-2.2.3.min.js"></script>
 	<!-- Bootstrap 3.3.6 -->
@@ -121,6 +116,14 @@
 				"autoWidth" : false
 			});
 		});
+	</script>
+	<script type="text/javascript" language="JavaScript">
+		//: 判断网页是否加载完成   
+		document.onreadystatechange = function() {
+			if (document.readyState == "complete") {
+				document.getElementById('divprogressbar').style.display = 'none';
+			}
+		}
 	</script>
 </body>
 </html>
