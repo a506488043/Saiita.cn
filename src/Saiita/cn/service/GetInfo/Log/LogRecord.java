@@ -9,6 +9,8 @@ import org.apache.commons.logging.LogFactory;
 import com.mysql.jdbc.Connection;
 
 import Saiita.cn.JDBC.JDBC;
+import Saiita.cn.service.GetSystemInformation.Browser;
+import Saiita.cn.service.GetSystemInformation.GetSystemTime;
 
 /**
  * 用户登陆记录日志
@@ -21,6 +23,17 @@ public class LogRecord {
 	public static Log logger = LogFactory.getLog(LogRecord.class);
 	PreparedStatement pstmt = null;
 	String sql = "INSERT INTO safetyLog (username,datetime,operation,result,safetylog,ip,browser,BrowserType) VALUES(?,?,?,?,?,?,?,?);";
+	// 获取浏览器类型
+	static Browser getBrowser = new Browser();
+	// 获取系统时间
+	GetSystemTime getSystemTime = new GetSystemTime();
+
+	public void log(String name, String browserType, String ip, String result, String operation, String safelog)
+			throws SQLException {
+		
+		logrecorc(name, GetSystemTime.GetSyetemTimes(), result, operation, safelog, ip,
+				getBrowser.getBrowserName(browserType), browserType);
+	}
 
 	public void logrecorc(String username, long datetime, String result, String operation, String safelog, String ip,
 			String browser, String browserType) throws SQLException {

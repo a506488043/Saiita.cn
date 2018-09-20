@@ -21,7 +21,7 @@ public class CheckLoginInfo {
 
 	@SuppressWarnings("resource")
 	public static String checkLogin(String username, String password, String ip, String Agent) throws SQLException {
-		logger.info("用户登陆验证!");
+		logger.info("登陆日志验证!");
 		String browser = getBrowser.getBrowserName(Agent);
 		// 用户输入账号参数安全校验
 		String[] value = { username, password };
@@ -46,7 +46,7 @@ public class CheckLoginInfo {
 				// 查询的密码和输入的密码对比，正确的进入
 				if (checkPasswd.equals(password) || password.equals(checkPasswd)) {
 					// 记录登陆信息
-					log.logrecorc(username, l, "用户登陆", "登陆成功", "1", ip, browser, Agent);
+					log.logrecorc(username, l, "登陆日志", "登陆成功", "1", ip, browser, Agent);
 					// 获得登陆成功次数
 					int Loginsuccess = rs.getInt("LoginSuccess");
 					// 成功一次，LoginSuccess次数增加一次
@@ -66,7 +66,7 @@ public class CheckLoginInfo {
 					return "Success";
 				} else {
 					// 记录登陆失败
-					log.logrecorc(username, l, "用户登陆", "用户名或密码错误", "1", ip, browser, Agent);
+					log.logrecorc(username, l, "登陆日志", "用户名或密码错误", "1", ip, browser, Agent);
 					// 获得登陆失败次数
 					int Loginfailed = rs.getInt("Loginfailure");
 					// 失败一次，Loginfailure次数增加一次
@@ -86,16 +86,16 @@ public class CheckLoginInfo {
 					return "failed";
 				}
 			} else {
-				log.logrecorc(username, l, "用户登陆", "用户名或密码错误", "1", ip, browser, Agent);
+				log.logrecorc(username, l, "登陆日志", "用户名或密码错误", "1", ip, browser, Agent);
 				return "No data";
 			}
 		} catch (Exception e) {
 			// TODO: handle exception
 			logger.error("获取Usre表失败" + ":" + e.getMessage());
 			if (ip.length() >= 31) {
-				log.logrecorc(username, l, "用户登陆", e.getMessage(), "1", "超出IP长度", browser, Agent);
+				log.logrecorc(username, l, "登陆日志", e.getMessage(), "1", "超出IP长度", browser, Agent);
 			} else if (username.length() >= 17) {
-				log.logrecorc("输入长度超过用户名长度", l, "用户登陆", e.getMessage(), "1", ip, browser, Agent);
+				log.logrecorc("输入长度超过用户名长度", l, "登陆日志", e.getMessage(), "1", ip, browser, Agent);
 			}
 			return "failed";
 		}

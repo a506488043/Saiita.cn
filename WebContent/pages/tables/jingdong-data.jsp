@@ -4,6 +4,7 @@
 <%@page import="Saiita.cn.entity.UserInfo"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="java.util.List"%>
+<%@page import="Saiita.cn.service.GetInfo.Log.LogRecord"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 
 <html>
@@ -59,6 +60,12 @@
 				</thead>
 				<tbody>
 					<%
+						LogRecord log1 = new LogRecord();
+						HttpServletRequest req = (HttpServletRequest) request;
+						HttpServletResponse res = (HttpServletResponse) response;
+						session = req.getSession();
+						String username = (String) session.getAttribute("username");
+						log1.log(username, request.getHeader("User-Agent"), request.getRemoteAddr(), "操作日志", "查询京东账单", "2");
 						List<UserInfo> list = getAllUserInfo.getAllUserInfo();
 						for (int i = 0; i < list.size(); i++) {
 							UserInfo user = (UserInfo) list.get(i);

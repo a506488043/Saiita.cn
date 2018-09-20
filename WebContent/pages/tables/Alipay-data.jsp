@@ -2,8 +2,8 @@
 	pageEncoding="UTF-8"%>
 <%@page import="Saiita.cn.service.GetInfo.getAllAlpayInfo"%>
 <%@page import="Saiita.cn.entity.alipayInfo"%>
-<%@page import="java.util.ArrayList"%>
-<%@page import="java.util.List"%>
+<%@page import="java.util.*"%>
+<%@page import="Saiita.cn.service.GetInfo.Log.LogRecord"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 
 <html>
@@ -64,6 +64,13 @@
 						</thead>
 						<tbody>
 							<%
+								LogRecord log = new LogRecord();
+								HttpServletRequest req = (HttpServletRequest) request;
+								HttpServletResponse res = (HttpServletResponse) response;
+								session = req.getSession();
+								String username = (String) session.getAttribute("username");
+								log.log(username, request.getHeader("User-Agent"), request.getRemoteAddr(), "操作日志", "查询支付宝账单", "2");
+
 								List<alipayInfo> list = getAllAlpayInfo.getAllAlpayInfo();
 								for (int i = 0; i < list.size(); i++) {
 									alipayInfo alipay = list.get(i);

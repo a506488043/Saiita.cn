@@ -5,6 +5,7 @@
 <%@page import="Saiita.cn.entity.alipayStatisticsInfo"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="java.util.List"%>
+<%@page import="Saiita.cn.service.GetInfo.Log.LogRecord"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 
 <html>
@@ -60,6 +61,12 @@
 				</thead>
 				<tbody>
 					<%
+					LogRecord log = new LogRecord();
+					HttpServletRequest req = (HttpServletRequest) request;
+					HttpServletResponse res = (HttpServletResponse) response;
+					session = req.getSession();
+					String username = (String) session.getAttribute("username");
+					log.log(username, request.getHeader("User-Agent"), request.getRemoteAddr(), "操作日志", "查询总账单", "2");
 						List<alipayStatisticsInfo> list = alipayStatistics.alipayStatistics();
 						for (int i = 0; i < list.size(); i++) {
 							alipayStatisticsInfo alipay = (alipayStatisticsInfo) list.get(i);

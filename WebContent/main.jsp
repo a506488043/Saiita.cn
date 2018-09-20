@@ -350,9 +350,9 @@
 				</span>
 			</a>
 				<ul class="treeview-menu">
-					<li><a href="pages/tables/Loginlog.jsp"
-						target="mainFrame"><i class="fa fa-circle-o"></i> 登陆日志</a></li>
-					<li><a href="pages/tables/jingdong-data.jsp"
+					<li><a href="pages/tables/Loginlog.jsp" target="mainFrame"><i
+							class="fa fa-circle-o"></i> 登陆日志</a></li>
+					<li><a href="pages/tables/operationlog.jsp"
 						target="mainFrame"><i class="fa fa-circle-o"></i> 操作日志</a></li>
 				</ul></li>
 			<li class="treeview"><a href="#"> <i class="fa fa-pie-chart"></i>
@@ -463,11 +463,13 @@
 					<span>Documentation</span></a></li>
 		</ul>
 		</section> <!-- /.sidebar --> </aside>
-
+		<div class="overlay" id="divprogressbar">
+			<i class="fa fa-refresh fa-spin"> </i>
+		</div>
 		<!-- Content Wrapper. Contains page content -->
 		<div class="content-wrapper">
 			<iframe src="pages/tables/data.jsp" name="mainFrame" height="930"
-				width="100%"></iframe>
+				width="100%" ></iframe>
 		</div>
 		<!-- /.content-wrapper -->
 		<footer class="main-footer"> <strong>Copyright
@@ -483,7 +485,7 @@
 			<li><a href="#control-sidebar-settings-tab" data-toggle="tab"><i
 					class="fa fa-gears"></i></a></li>
 		</ul>
-		
+
 		<!-- Tab panes -->
 		<div class="tab-content">
 			<!-- Home tab content -->
@@ -690,6 +692,14 @@
 	<script src="dist/js/pages/dashboard.js"></script>
 	<!-- AdminLTE for demo purposes -->
 	<script src="dist/js/demo.js"></script>
+	<script type="text/javascript" language="JavaScript">
+		//: 判断网页是否加载完成   
+		document.onreadystatechange = function() {
+			if (document.readyState == "complete") {
+				document.getElementById('divprogressbar').style.display = 'none';
+			}
+		}
+	</script>
 </body>
 </html>
 </html>

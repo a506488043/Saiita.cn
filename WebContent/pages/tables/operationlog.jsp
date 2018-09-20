@@ -1,10 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@page import="Saiita.cn.service.GetInfo.getAllUserInfo"%>
-<%@page import="Saiita.cn.entity.UserInfo"%>
+<%@page import="Saiita.cn.service.GetInfo.getSafetyLog"%>
+<%@page import="Saiita.cn.entity.SafeLog"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="java.util.List"%>
-<%@page import="Saiita.cn.service.GetInfo.Log.LogRecord"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 
 <html>
@@ -39,57 +38,53 @@
   <![endif]-->
 </head>
 <body class="hold-transition skin-blue sidebar-mini">
-	<div class="box">
-		<div class="box-header">
-			<h3 class="box-title">招商账单</h3>
-		</div>
-		<!-- /.box-header -->
-		<div class="box-body">
-			<table id="example1" class="table table-bordered table-striped">
-				<thead>
-					<tr>
-						<th>Id</th>
-						<th>用户名</th>
-						<th>密码</th>
-						<th>权限</th>
-						<th>登陆失败次数</th>
-						<th>登陆成功次数</th>
-						<th>创建时间</th>
-						<th>上次登陆时间</th>
-					</tr>
-				</thead>
-				<tbody>
-					<%
-						LogRecord log1 = new LogRecord();
-						HttpServletRequest req = (HttpServletRequest) request;
-						HttpServletResponse res = (HttpServletResponse) response;
-						session = req.getSession();
-						String username = (String) session.getAttribute("username");
-						log1.log(username, request.getHeader("User-Agent"), request.getRemoteAddr(), "操作日志", "查询招商银行账单", "2");
-						List<UserInfo> list = getAllUserInfo.getAllUserInfo();
-						for (int i = 0; i < list.size(); i++) {
-							UserInfo user = (UserInfo) list.get(i);
-					%>
-					<tr>
-						<td><%=user.getId()%></td>
-						<td><%=user.getUsername()%></td>
-						<td><%=user.getPassword()%></td>
-						<td><%=user.getRole()%></td>
-						<td><%=user.getLoginfailure()%></td>
-						<td><%=user.getLoginSuccess()%></td>
-						<td><%=user.getCreatime()%></td>
-						<td><%=user.getLastLoginTime()%></td>
-					</tr>
-					<%
-						}
-					%>
-				</tbody>
-			</table>
-			<div class="overlay" id="divprogressbar">
-				<i class="fa fa-refresh fa-spin"></i>
+	<div class="row">
+		<div class="col-xs-12">
+			<div class="box">
+				<div class="box-header">
+					<h3 class="box-title">登陆日志</h3>
+				</div>
+				<!-- /.box-header -->
+				<div class="overlay" id="divprogressbar">
+					<i class="fa fa-refresh fa-spin"> </i>
+				</div>
+				<div class="box-body">
+
+					<table id="example2" class="table table-bordered table-striped">
+						<thead>
+							<tr>
+								<!-- <th>Id</th>-->
+								<th>操作时间</th>
+								<th>用户名</th>
+								<th>结果</th>
+								<th>登陆IP</th>
+								<th>浏览器类型</th>
+							</tr>
+						</thead>
+						<tbody>
+							<%
+								List<SafeLog> list = getSafetyLog.getLog1Info();
+								for (int i = 0; i < list.size(); i++) {
+									SafeLog log = (SafeLog) list.get(i);
+							%>
+							<tr>
+								<td><%=log.getDatetime()%></td>
+								<td><%=log.getUsername()%></td>
+								<td><%=log.getResult()%></td>
+								<td><%=log.getIp()%></td>
+								<td><%=log.getBrowser()%></td>
+							</tr>
+							<%
+								}
+							%>
+						</tbody>
+					</table>
+				</div>
+				<!-- /.box-body -->
 			</div>
+			<!-- /.box -->
 		</div>
-		<!-- /.box-body -->
+		<!-- /.col -->
 	</div>
 	<!-- /.box -->
 	<!-- Add the sidebar's background. This div must be placed
@@ -112,6 +107,19 @@
 	<!-- AdminLTE for demo purposes -->
 	<script src="../../dist/js/demo.js"></script>
 	<!-- page script -->
+	<script>
+		$(function() {
+			$("#example1").DataTable();
+			$('#example2').DataTable({
+				"paging" : true,
+				"lengthChange" : true,
+				"searching" : true,
+				"ordering" : false,
+				"info" : true,
+				"autoWidth" : false
+			});
+		});
+	</script>
 	<script type="text/javascript" language="JavaScript">
 		//: 判断网页是否加载完成   
 		document.onreadystatechange = function() {
@@ -119,19 +127,6 @@
 				document.getElementById('divprogressbar').style.display = 'none';
 			}
 		}
-	</script>
-	<script>
-		$(function() {
-			$("#example1").DataTable();
-			$('#example2').DataTable({
-				"paging" : true,
-				"lengthChange" : false,
-				"searching" : false,
-				"ordering" : true,
-				"info" : true,
-				"autoWidth" : false
-			});
-		});
 	</script>
 </body>
 </html>
