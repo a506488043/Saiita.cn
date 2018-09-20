@@ -29,7 +29,9 @@ public class Browser {
 				|| type.equals("MQQBrowser") || type.equals("")) {
 			if (agent.indexOf("UCBrowser") > 0) {
 				return type + "/" + "UCä¯ÀÀÆ÷";
-			}else if (agent.indexOf("TIM") > 0) {
+			}else if (agent.indexOf("DingTalk") > 0) {
+				return type + "/" + "¶¤¶¤";
+			} else if (agent.indexOf("TIM") > 0) {
 				return type + "/" + "TIM";
 			} else if (agent.indexOf("QQ") > 0) {
 				return type + "/" + "QQ";

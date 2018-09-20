@@ -62,7 +62,7 @@ public class LoginPost extends HttpServlet {
 		try {
 			if (password == "0000" || password.equals("0000")) {
 				logger.error("用户名或密码为空！");
-				log.log(username, request.getHeader("User-Agent"), request.getRemoteAddr(), operation, "登陆失败，用户名或密码为空",
+				log.log(username, request.getHeader("User-Agent"), request.getRemoteAddr(), operation, "用户名或密码为空",
 						"1");
 				response.sendRedirect("login.jsp");
 			} else {
@@ -87,7 +87,7 @@ public class LoginPost extends HttpServlet {
 						response.sendRedirect("main.jsp");
 					} else if (result.equals("failed")) {
 						logger.error("登陆失败");
-						log.log(username, request.getHeader("User-Agent"), request.getRemoteAddr(), operation, "登陆失败",
+						log.log(username, request.getHeader("User-Agent"), request.getRemoteAddr(), operation, "用户或密码错误",
 								"1");
 						response.sendRedirect("login.jsp");
 					} else if (result.equals("No data")) {

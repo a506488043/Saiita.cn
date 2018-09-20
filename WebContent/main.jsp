@@ -329,20 +329,20 @@
 				</ul></li>
 			<li class="treeview"><a href="#"> <i class="fa fa-th"></i> <span>收入支出账单</span>
 					<span class="pull-right-container"> <span
-						class="label label-primary pull-right">5</span>
+						class="label label-primary pull-right">1</span>
 				</span>
 			</a>
 				<ul class="treeview-menu">
 					<li><a href="pages/tables/TotalSpending.jsp"
 						target="mainFrame"><i class="fa fa-circle-o"></i> 总账单</a></li>
-					<li><a href="pages/tables/jingdong-data.jsp"
-						target="mainFrame"><i class="fa fa-circle-o"></i> 京东账单</a></li>
+					<!-- <li><a href="pages/tables/jingdong-data.jsp"
+						target="mainFrame"><i class="fa fa-circle-o"></i> 京东账单</a></li> -->
 					<li><a href="pages/tables/Alipay-data.jsp" target="mainFrame"><i
 							class="fa fa-circle-o"></i> 支付宝账单</a></li>
-					<li><a href="pages/tables/China-merchants-bank.jsp"
+					<!--<li><a href="pages/tables/China-merchants-bank.jsp"
 						target="mainFrame"><i class="fa fa-circle-o"></i> 招商银行账单</a></li>
 					<li><a href="pages/tables/My-Bank-data.jsp" target="mainFrame"><i
-							class="fa fa-circle-o"></i> 网商银行账单</a></li>
+							class="fa fa-circle-o"></i> 网商银行账单</a></li> -->
 				</ul></li>
 			<li class="treeview"><a href="#"> <i class="fa fa-th"></i> <span>日志管理</span>
 					<span class="pull-right-container"> <span
