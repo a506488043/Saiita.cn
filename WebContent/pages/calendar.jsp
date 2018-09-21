@@ -1,5 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@page import="Saiita.cn.service.GetInfo.getCalendarInfo"%>
+<%@page import="Saiita.cn.entity.calendar"%>
+<%@page import="java.util.ArrayList"%>
+<%@page import="java.util.List"%>
 <%@page import="Saiita.cn.service.GetInfo.Log.LogRecord"%>
 <html>
 <%
@@ -57,12 +61,9 @@
 						<div class="box-body">
 							<!-- the events -->
 							<div id="external-events">
-								<div class="external-event bg-green">Lunch</div>
-								<div class="external-event bg-yellow">回家</div>
-								<div class="external-event bg-aqua">Do homework</div>
-								<div class="external-event bg-light-blue">Work on UI
-									design</div>
-								<div class="external-event bg-red">Sleep tight</div>
+								<%
+								List<calendar> list = getCalendarInfo.getCalendar(); %>
+
 								<div class="checkbox">
 									<label for="drop-remove"> <input type="checkbox"
 										id="drop-remove"> 移除计划

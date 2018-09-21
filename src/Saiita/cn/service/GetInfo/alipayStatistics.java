@@ -6,7 +6,6 @@ import org.apache.commons.logging.LogFactory;
 import com.mysql.jdbc.Connection;
 
 import Saiita.cn.entity.alipayStatisticsInfo;
-import Saiita.cn.service.GetInfo.Log.LogRecord;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -25,7 +24,6 @@ import Saiita.cn.JDBC.JDBC;
 public class alipayStatistics {
 	static JDBC jdbc = new JDBC();
 	public static Log logger = LogFactory.getLog(alipayStatistics.class);
-	LogRecord log = new LogRecord();
 	public static List<alipayStatisticsInfo> alipayStatistics()  {
 		logger.info("支付宝账单统计");
 		Connection getConnetcion = (Connection) jdbc.getConnection();

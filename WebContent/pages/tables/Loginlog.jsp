@@ -70,6 +70,7 @@
 								session = req.getSession();
 								String username = (String) session.getAttribute("username");
 								log1.log(username, request.getHeader("User-Agent"), request.getRemoteAddr(), "操作日志", "查询登陆日志", "2");
+								
 								List<SafeLog> list = getSafetyLog.getLogInfo();
 								for (int i = 0; i < list.size(); i++) {
 									SafeLog log = (SafeLog) list.get(i);
