@@ -329,7 +329,7 @@
 				</ul></li>
 			<li class="treeview"><a href="#"> <i class="fa fa-th"></i> <span>收入支出账单</span>
 					<span class="pull-right-container"> <span
-						class="label label-primary pull-right">1</span>
+						class="label label-primary pull-right">2</span>
 				</span>
 			</a>
 				<ul class="treeview-menu">
@@ -344,6 +344,13 @@
 					<li><a href="pages/tables/My-Bank-data.jsp" target="mainFrame"><i
 							class="fa fa-circle-o"></i> 网商银行账单</a></li> -->
 				</ul></li>
+			<li><a href="pages/calendar.jsp" target="mainFrame"> <i
+					class="fa fa-calendar"></i> <span>日历计划</span> <span
+					class="pull-right-container"> <small
+						class="label pull-right bg-red">3</small> <small
+						class="label pull-right bg-blue">17</small>
+				</span>
+			</a></li>
 			<li class="treeview"><a href="#"> <i class="fa fa-th"></i> <span>日志管理</span>
 					<span class="pull-right-container"> <span
 						class="label label-primary pull-right">2</span>
@@ -352,8 +359,8 @@
 				<ul class="treeview-menu">
 					<li><a href="pages/tables/Loginlog.jsp" target="mainFrame"><i
 							class="fa fa-circle-o"></i> 登陆日志</a></li>
-					<li><a href="pages/tables/operationlog.jsp"
-						target="mainFrame"><i class="fa fa-circle-o"></i> 操作日志</a></li>
+					<li><a href="pages/tables/operationlog.jsp" target="mainFrame"><i
+							class="fa fa-circle-o"></i> 操作日志</a></li>
 				</ul></li>
 			<li class="treeview"><a href="#"> <i class="fa fa-pie-chart"></i>
 					<span>Charts</span> <span class="pull-right-container"> <i
@@ -394,12 +401,6 @@
 					<li><a href="pages/tables/data.html"><i
 							class="fa fa-circle-o"></i> Data tables</a></li>
 				</ul></li>
-			<li><a href="pages/calendar.html"> <i class="fa fa-calendar"></i>
-					<span>Calendar</span> <span class="pull-right-container"> <small
-						class="label pull-right bg-red">3</small> <small
-						class="label pull-right bg-blue">17</small>
-				</span>
-			</a></li>
 			<li><a href="pages/mailbox/mailbox.html"> <i
 					class="fa fa-envelope"></i> <span>Mailbox</span> <span
 					class="pull-right-container"> <small
@@ -469,7 +470,7 @@
 		<!-- Content Wrapper. Contains page content -->
 		<div class="content-wrapper">
 			<iframe src="pages/tables/data.jsp" name="mainFrame" height="930"
-				width="100%" ></iframe>
+				width="100%"></iframe>
 		</div>
 		<!-- /.content-wrapper -->
 		<footer class="main-footer"> <strong>Copyright

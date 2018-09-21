@@ -38,6 +38,7 @@
   <![endif]-->
 </head>
 <body class="hold-transition skin-blue sidebar-mini">
+<section class="content">
 	<div class="row">
 		<div class="col-xs-12">
 			<div class="box">
@@ -95,6 +96,7 @@
 			<!-- BOX -->
 		</div>
 	</div>
+	</section>
 	<!-- jQuery 2.2.3 -->
 	<script src="../../plugins/jQuery/jquery-2.2.3.min.js"></script>
 	<!-- Bootstrap 3.3.6 -->

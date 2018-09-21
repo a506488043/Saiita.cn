@@ -39,6 +39,7 @@
   <![endif]-->
 </head>
 <body class="hold-transition skin-blue sidebar-mini">
+<section class="content">
 	<div class="row">
 		<div class="col-xs-12">
 			<div class="box">
@@ -50,7 +51,6 @@
 					<i class="fa fa-refresh fa-spin"> </i>
 				</div>
 				<div class="box-body">
-
 					<table id="example2" class="table table-bordered table-striped">
 						<thead>
 							<tr>
@@ -93,6 +93,7 @@
 		</div>
 		<!-- /.col -->
 	</div>
+	</section>
 	<!-- /.box -->
 	<!-- Add the sidebar's background. This div must be placed
        immediately after the control sidebar -->

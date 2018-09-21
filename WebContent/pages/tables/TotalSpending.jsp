@@ -40,6 +40,7 @@
   <![endif]-->
 </head>
 <body class="hold-transition skin-blue sidebar-mini">
+<section class="content">
 	<div class="box">
 		<div class="box-header">
 			<h3 class="box-title">用户数据</h3>
@@ -115,6 +116,7 @@
 		<!-- /.box-body -->
 	</div>
 	<!-- /.box -->
+	<section class="content">
 	<!-- Add the sidebar's background. This div must be placed
        immediately after the control sidebar -->
 	<div class="control-sidebar-bg"></div>

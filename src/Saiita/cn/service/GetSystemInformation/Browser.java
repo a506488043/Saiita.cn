@@ -2,11 +2,6 @@ package Saiita.cn.service.GetSystemInformation;
 
 public class Browser {
 	public final static String[] type = { "Android", "iPhone", "iPod", "iPad", "Windows Phone", "MQQBrowser" };
-	// String msieP = "msie ([\\d.]+)";
-	// String firefoxP = "firefox\\/([\\d.]+)";
-	// String chromeP = "chrome\\/([\\d.]+)";
-	// String operaP = "opera.([\\d.]+)/)";
-	// String safariP = "version\\/([\\d.]+).*safari";
 
 	public static String checkAgentIsMobile(String ua) {
 		Boolean flag = false;
@@ -29,7 +24,9 @@ public class Browser {
 				|| type.equals("MQQBrowser") || type.equals("")) {
 			if (agent.indexOf("UCBrowser") > 0) {
 				return type + "/" + "UCä¯ÀÀÆ÷";
-			}else if (agent.indexOf("DingTalk") > 0) {
+			}else if (agent.indexOf("AlipayClient") > 0) {
+				return type + "/" + "Ö§¸¶±¦";
+			} else if (agent.indexOf("DingTalk") > 0) {
 				return type + "/" + "¶¤¶¤";
 			} else if (agent.indexOf("TIM") > 0) {
 				return type + "/" + "TIM";
