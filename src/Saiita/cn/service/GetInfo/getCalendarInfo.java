@@ -19,13 +19,18 @@ public class getCalendarInfo {
 	static JDBC jdbc = new JDBC();
 	public static Log logger = LogFactory.getLog(getCalendarInfo.class);
 	LogRecord log = new LogRecord();
-	public List<calendar> getCalendar() throws SQLException{
-		
+	public static List<calendar> getCalendar() throws SQLException{
+		//连接数据库		
 		Connection getConnetcion = (Connection) jdbc.getConnection();
-		List<calendar> list = new ArrayList<calendar>();
-		PreparedStatement pstmt;
+		//MySQL:查询calendar表
 		String sql="SELECT*FROM calendar";
+		
+		PreparedStatement pstmt;
+		
+		List<calendar> list = new ArrayList<calendar>();
+		
 		pstmt = getConnetcion.prepareStatement(sql);
+		
 		ResultSet rs = pstmt.executeQuery();
 		while (rs.next()) {
 			calendar calendar = new calendar();
@@ -42,7 +47,7 @@ public class getCalendarInfo {
 		}
 		pstmt.close();
 		getConnetcion.close();
-		return null;
+		return list;
 		
 	}
 	

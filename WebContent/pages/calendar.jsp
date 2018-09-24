@@ -1,9 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@page import="Saiita.cn.service.GetInfo.getCalendarInfo"%>
+<%@page import="Saiita.cn.service.GetInfo.*"%>
 <%@page import="Saiita.cn.entity.calendar"%>
-<%@page import="java.util.ArrayList"%>
-<%@page import="java.util.List"%>
+<%@page import="java.util.*"%>
 <%@page import="Saiita.cn.service.GetInfo.Log.LogRecord"%>
 <html>
 <%
@@ -62,8 +61,14 @@
 							<!-- the events -->
 							<div id="external-events">
 								<%
-								List<calendar> list = getCalendarInfo.getCalendar(); %>
-
+									List<calendar> list = getCalendarInfo.getCalendar();
+									for (int i = 0; i < list.size(); i++) {
+										calendar calendar = (calendar)list.get(i);
+								%>
+								<%=calendar.getDraggableEvents()%>
+								<%
+									}
+								%>
 								<div class="checkbox">
 									<label for="drop-remove"> <input type="checkbox"
 										id="drop-remove"> 移除计划
@@ -182,15 +187,15 @@
 					// 使用元素的文本作为事件标题
 					};
 
-					// store the Event Object in the DOM element so we can get to it later
+					// 将事件对象存储在DOM元素中，以便稍后可以使用
 					$(this).data('eventObject', eventObject);
 
-					// make the event draggable using jQuery UI
+					// 使用jQuery UI使事件可拖动
 					$(this).draggable({
 						zIndex : 1070,
-						revert : true, // will cause the event to go back to its
+						revert : true, // 会导致事件回到它的
 						revertDuration : 0
-					//  original position after the drag
+					//  拖动后的原始位置
 					});
 
 				});
@@ -198,9 +203,9 @@
 
 			ini_events($('#external-events div.external-event'));
 
-			/* initialize the calendar
+			/* 初始化日历
 			 -----------------------------------------------------------------*/
-			//Date for the calendar events (dummy data)
+			//日历事件的日期(虚拟数据)
 			var date = new Date();
 			var d = date.getDate(), m = date.getMonth(), y = date.getFullYear();
 			$('#calendar').fullCalendar(

@@ -72,7 +72,7 @@
 								String username = (String) session.getAttribute("username");
 								log.log(username, request.getHeader("User-Agent"), request.getRemoteAddr(), "操作日志", "查询支付宝账单", "2");
 
-								List<alipayInfo> list = getAllAlpayInfo.getAllAlpayInfo();
+								List<alipayInfo> list = getAllAlpayInfo.getAllAlpay();
 								for (int i = 0; i < list.size(); i++) {
 									alipayInfo alipay = list.get(i);
 							%>

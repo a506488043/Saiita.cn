@@ -45,7 +45,7 @@ public class GetAllAlpayInfo extends HttpServlet {
 			throws ServletException, IOException {
 		request.setCharacterEncoding("utf-8");
 		response.setCharacterEncoding("utf-8");
-		List<alipayInfo> list = getAllAlpayInfo.getAllAlpayInfo();
+		List<alipayInfo> list = getAllAlpayInfo.getAllAlpay();
 		JSONArray getAllAlpayInfo = JSONArray.fromObject(list);
 		response.getWriter().println(getAllAlpayInfo);
 	}

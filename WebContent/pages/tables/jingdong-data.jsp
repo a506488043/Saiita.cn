@@ -66,7 +66,7 @@
 						session = req.getSession();
 						String username = (String) session.getAttribute("username");
 						log1.log(username, request.getHeader("User-Agent"), request.getRemoteAddr(), "操作日志", "查询京东账单", "2");
-						List<UserInfo> list = getAllUserInfo.getAllUserInfo();
+						List<UserInfo> list = getAllUserInfo.getAllUser();
 						for (int i = 0; i < list.size(); i++) {
 							UserInfo user = (UserInfo) list.get(i);
 					%>

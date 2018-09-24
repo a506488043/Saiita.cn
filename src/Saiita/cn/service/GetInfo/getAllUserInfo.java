@@ -21,7 +21,7 @@ public class getAllUserInfo {
 	static JDBC jdbc = new JDBC();
 	public static Log logger = LogFactory.getLog(getAllUserInfo.class);
 
-	public static List<UserInfo> getAllUserInfo() {
+	public static List<UserInfo> getAllUser() {
 		logger.info("获取User表所有用户数据");
 		Connection getConnetcion = (Connection) jdbc.getConnection();
 		String sql = "SELECT* from user  ";

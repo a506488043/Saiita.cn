@@ -20,7 +20,7 @@ public class getAllAlpayInfo {
 	static JDBC jdbc = new JDBC();
 	public static Log logger = LogFactory.getLog(getAllUserInfo.class);
 
-	public static List<alipayInfo> getAllAlpayInfo() {
+	public static List<alipayInfo> getAllAlpay() {
 		logger.info("获取Alipay表数据");
 		Connection getConnetcion = (Connection) jdbc.getConnection();
 		String sql = "SELECT* from alipay ";

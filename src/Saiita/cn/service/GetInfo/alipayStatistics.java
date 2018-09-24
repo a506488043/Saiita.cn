@@ -24,7 +24,7 @@ import Saiita.cn.JDBC.JDBC;
 public class alipayStatistics {
 	static JDBC jdbc = new JDBC();
 	public static Log logger = LogFactory.getLog(alipayStatistics.class);
-	public static List<alipayStatisticsInfo> alipayStatistics()  {
+	public static List<alipayStatisticsInfo> alipayStatisticsinfo()  {
 		logger.info("支付宝账单统计");
 		Connection getConnetcion = (Connection) jdbc.getConnection();
 		// 更新统计支付宝账单数据

@@ -27,6 +27,7 @@
     <servlet-name>GetAllAlpayInfo</servlet-name>
     <url-pattern>/GetAllAlpayInfo.do</url-pattern>
   </servlet-mapping>
+  
   <filter>
     <filter-name>LoginFilter</filter-name>
     <filter-class>Saiita.cn.filter.LoginFilter</filter-class>

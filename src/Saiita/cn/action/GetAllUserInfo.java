@@ -51,7 +51,7 @@ public class GetAllUserInfo extends HttpServlet {
 		request.setCharacterEncoding("utf-8");
 		response.setCharacterEncoding("utf-8");
 		// TODO Auto-generated method stub
-		List<UserInfo> list = getAllUserInfo.getAllUserInfo();
+		List<UserInfo> list = getAllUserInfo.getAllUser();
 		// 将list装换为Json数组（JSONArray）
 		JSONArray UserList = JSONArray.fromObject(list);
 		//System.out.println(UserList.toString());
