@@ -335,6 +335,8 @@
 				<ul class="treeview-menu">
 					<li><a href="pages/tables/TotalSpending.jsp"
 						target="mainFrame"><i class="fa fa-circle-o"></i> 总账单</a></li>
+					<li><a href="pages/tables/jingdong-data.jsp"
+						target="mainFrame"><i class="fa fa-circle-o"></i> 信用卡计算</a></li>
 					<!-- <li><a href="pages/tables/jingdong-data.jsp"
 						target="mainFrame"><i class="fa fa-circle-o"></i> 京东账单</a></li> -->
 					<li><a href="pages/tables/Alipay-data.jsp" target="mainFrame"><i

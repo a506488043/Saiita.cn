@@ -38,7 +38,6 @@
   <![endif]-->
 </head>
 <body class="hold-transition skin-blue sidebar-mini">
-<section class="content">
 	<div class="row">
 		<div class="col-xs-12">
 			<div class="box">
@@ -49,6 +48,7 @@
 				<div class="overlay" id="divprogressbar">
 					<i class="fa fa-refresh fa-spin"> </i>
 				</div>
+				
 				<div class="box-body">
 					<table id="example2" class="table table-bordered table-striped">
 						<thead>
@@ -72,7 +72,7 @@
 								String username = (String) session.getAttribute("username");
 								log.log(username, request.getHeader("User-Agent"), request.getRemoteAddr(), "操作日志", "查询支付宝账单", "2");
 
-								List<alipayInfo> list = getAllAlpayInfo.getAllAlpay();
+								List<alipayInfo> list = getAllAlpayInfo.getAllAlpay(1,20);
 								for (int i = 0; i < list.size(); i++) {
 									alipayInfo alipay = list.get(i);
 							%>
@@ -90,13 +90,14 @@
 								}
 							%>
 						</tbody>
+						
 					</table>
 				</div>
 			</div>
 			<!-- BOX -->
+			
 		</div>
 	</div>
-	</section>
 	<!-- jQuery 2.2.3 -->
 	<script src="../../plugins/jQuery/jquery-2.2.3.min.js"></script>
 	<!-- Bootstrap 3.3.6 -->
@@ -117,11 +118,11 @@
 		$(function() {
 			$("#example1").DataTable();
 			$('#example2').DataTable({
-				"paging" : true,
+				"paging" : false,
 				"lengthChange" : false,
-				"searching" : true,
-				"ordering" : true,
-				"info" : true,
+				"searching" : false,
+				"ordering" : false,
+				"info" : false,
 				"autoWidth" : false
 			});
 		});

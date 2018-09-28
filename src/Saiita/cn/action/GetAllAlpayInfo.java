@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import Saiita.cn.entity.alipayInfo;
+import Saiita.cn.Page.getPageCount;
 import Saiita.cn.service.GetInfo.getAllAlpayInfo;
 import net.sf.json.JSONArray;
 
@@ -35,8 +36,9 @@ public class GetAllAlpayInfo extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		
+
 	}
+
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
 	 *      response)
@@ -45,8 +47,30 @@ public class GetAllAlpayInfo extends HttpServlet {
 			throws ServletException, IOException {
 		request.setCharacterEncoding("utf-8");
 		response.setCharacterEncoding("utf-8");
-		List<alipayInfo> list = getAllAlpayInfo.getAllAlpay();
-		JSONArray getAllAlpayInfo = JSONArray.fromObject(list);
-		response.getWriter().println(getAllAlpayInfo);
+		// 获取参数
+		int PAGESIZE = 10;
+		int pageNo = 1;
+		String s = request.getParameter("pgno");
+		if (s != null) {
+			pageNo = Integer.parseInt(s);
+		}
+		try {
+			int pageCount = new getPageCount().PageCount(PAGESIZE);//获得总页数
+			List<alipayInfo> list = getAllAlpayInfo.getAllAlpay(pageNo, PAGESIZE);//获得指定页数据
+			int currentPage = pageNo;
+			request.setAttribute("currentPage", currentPage);
+			request.setAttribute("pageCount", pageCount);
+			request.setAttribute("cars", list);
+			int pagePrev = pageNo > 1 ? pageNo - 1 : 1;// 上一页
+			int pageNext = pageNo < pageCount ? pageNo + 1 : pageCount;// 下一页
+			request.setAttribute("pageNow", pageNo);
+			request.setAttribute("pagePrev", pagePrev);
+			request.setAttribute("pageNext", pageNext);
+			// JSONArray getAllAlpayInfo = JSONArray.fromObject(list);
+			// response.getWriter().println(getAllAlpayInfo);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 }

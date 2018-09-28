@@ -63,7 +63,7 @@
 						</thead>
 						<tbody>
 							<%
-								List<UserInfo> list = getAllUserInfo.getAllUserInfo();
+								List<UserInfo> list = getAllUserInfo.getAllUser();
 								for (int i = 0; i < list.size(); i++) {
 									UserInfo user = (UserInfo) list.get(i);
 							%>
