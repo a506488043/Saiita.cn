@@ -101,7 +101,7 @@
 				"info" : true,
 				"autoWidth" : false,
 				ajax : {
-					url : 'getSafeLog',
+					url : 'getoperationlog',
 					dataSrc : ''
 				},
 				columns : [ {
