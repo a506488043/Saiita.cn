@@ -12,12 +12,12 @@ import Saiita.cn.JDBC.JDBC;
 /*
  * 支付宝账单计算
  */
-public class ToltalAlipay {
+public class getToltalAlipay {
 	static JDBC jdbc = new JDBC();
-	public static Log logger = LogFactory.getLog(ToltalAlipay.class);
+	public static Log logger = LogFactory.getLog(getToltalAlipay.class);
 
-	public void ToltalAlipay() throws SQLException {
-		logger.info("正在计算支付宝总账单。。。。。。。");
+	public void ToltalAlipayinfo() throws SQLException {
+		logger.info("正在计算支付宝总账单");
 		Connection getConnetcion = (Connection) jdbc.getConnection();
 		String alipayTotal = "update amountTotal set totalRevenue=(select count(Amount)as totalRevenue from alipay where  BalanceOfPayments='收入'),totalDisbursement=(select count(Amount)as totalDisbursement from alipay where  BalanceOfPayments='支出'),grossIncome=(select sum(Amount)as grossIncome from alipay where  BalanceOfPayments='收入'),totalExpenditure=(select sum(Amount)as totalExpenditure from alipay where  BalanceOfPayments='支出')where projects='支付宝'";
 		PreparedStatement pstmt;

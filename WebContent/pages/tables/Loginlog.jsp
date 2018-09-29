@@ -39,7 +39,6 @@
   <![endif]-->
 </head>
 <body class="hold-transition skin-blue sidebar-mini">
-<section class="content">
 	<div class="row">
 		<div class="col-xs-12">
 			<div class="box">
@@ -54,7 +53,6 @@
 					<table id="example2" class="table table-bordered table-striped">
 						<thead>
 							<tr>
-								<!-- <th>Id</th>-->
 								<th>登陆时间</th>
 								<th>用户名</th>
 								<th>结果</th>
@@ -62,30 +60,6 @@
 								<th>浏览器类型</th>
 							</tr>
 						</thead>
-						<tbody>
-							<%
-								LogRecord log1 = new LogRecord();
-								HttpServletRequest req = (HttpServletRequest) request;
-								HttpServletResponse res = (HttpServletResponse) response;
-								session = req.getSession();
-								String username = (String) session.getAttribute("username");
-								log1.log(username, request.getHeader("User-Agent"), request.getRemoteAddr(), "操作日志", "查询登陆日志", "2");
-								
-								List<SafeLog> list = getSafetyLog.getLogInfo();
-								for (int i = 0; i < list.size(); i++) {
-									SafeLog log = (SafeLog) list.get(i);
-							%>
-							<tr>
-								<td><%=log.getDatetime()%></td>
-								<td><%=log.getUsername()%></td>
-								<td><%=log.getResult()%></td>
-								<td><%=log.getIp()%></td>
-								<td><%=log.getBrowser()%></td>
-							</tr>
-							<%
-								}
-							%>
-						</tbody>
 					</table>
 				</div>
 				<!-- /.box-body -->
@@ -94,18 +68,17 @@
 		</div>
 		<!-- /.col -->
 	</div>
-	</section>
 	<!-- /.box -->
 	<!-- Add the sidebar's background. This div must be placed
        immediately after the control sidebar -->
 	<div class="control-sidebar-bg"></div>
 
 	<!-- jQuery 2.2.3 -->
-	<script src="../../plugins/jQuery/jquery-2.2.3.min.js"></script>
+	<script src="../../plugins/jQuery/jquery-3.3.1.js"></script>
 	<!-- Bootstrap 3.3.6 -->
 	<script src="../../bootstrap/js/bootstrap.min.js"></script>
 	<!-- DataTables -->
-	<script src="../../plugins/datatables/jquery.dataTables.min.js"></script>
+	<script src="../../plugins/datatables/jquery.dataTables.min2.js"></script>
 	<script src="../../plugins/datatables/dataTables.bootstrap.min.js"></script>
 	<!-- SlimScroll -->
 	<script src="../../plugins/slimScroll/jquery.slimscroll.min.js"></script>
@@ -118,14 +91,28 @@
 	<!-- page script -->
 	<script>
 		$(function() {
-			$("#example1").DataTable();
 			$('#example2').DataTable({
 				"paging" : true,
-				"lengthChange" : true,
-				"searching" : true,
+				"lengthChange" : false,
+				"searching" : false,
 				"ordering" : false,
-				"info" : true,
-				"autoWidth" : false
+				"info" : false,
+				"autoWidth" : true,
+				ajax : {
+					url : 'getSafeLog',
+					dataSrc : ''
+				},
+				columns : [ {
+					data : 'datetime'
+				}, {
+					data : 'username'
+				}, {
+					data : 'result'
+				}, {
+					data : 'ip'
+				}, {
+					data : 'browser'
+				} ]
 			});
 		});
 	</script>

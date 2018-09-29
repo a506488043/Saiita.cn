@@ -31,7 +31,7 @@ public class alipayStatistics {
 		logger.info("更新统计支付宝账单数据");
 		// 更新计算：总支出笔数，总支出金额，总收入笔数，总收入金额，
 		try {
-			new ToltalAlipay().ToltalAlipay();
+			new getToltalAlipay().ToltalAlipayinfo();
 		} catch (SQLException e1) {
 			// TODO Auto-generated catch block
 			logger.error("统计支付宝账单出错"+"\n"+e1);

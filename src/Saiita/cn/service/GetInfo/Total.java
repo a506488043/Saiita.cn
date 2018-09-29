@@ -18,7 +18,7 @@ public class Total {
 	static JDBC jdbc = new JDBC();
 	public static Log logger = LogFactory.getLog(Total.class);
 
-	public static List<alipayStatisticsInfo> Total() throws SQLException {
+	public static List<alipayStatisticsInfo> Totalinfo() throws SQLException {
 		logger.info("支付宝账单统计(账单总统计)Total");
 		Connection getConnetcion = (Connection) jdbc.getConnection();
 		// 更新统计支付宝账单数据

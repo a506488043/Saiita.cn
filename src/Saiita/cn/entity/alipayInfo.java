@@ -28,7 +28,7 @@ public class alipayInfo {
 	// 商品名称
 	String CommodityName;
 	// 金额
-	float Amount;
+	String Amount;
 	// 收/支
 	String BalanceOfPayments;
 	// 交易状态
@@ -46,11 +46,11 @@ public class alipayInfo {
 	// 收入总统计
 	String TotalRevenue;
 
-	public float getAmount() {
+	public String getAmount() {
 		return Amount;
 	}
 
-	public void setAmount(float amount) {
+	public void setAmount(String amount) {
 		Amount = amount;
 	}
 

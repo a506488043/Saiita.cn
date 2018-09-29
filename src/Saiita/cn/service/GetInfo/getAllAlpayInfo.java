@@ -20,21 +20,19 @@ public class getAllAlpayInfo {
 	static JDBC jdbc = new JDBC();
 	public static Log logger = LogFactory.getLog(getAllUserInfo.class);
 
-	public static List<alipayInfo> getAllAlpay(int pageNo,int pageSize) {
+	public static List<alipayInfo> getAllAlpay() {
 		logger.info("获取Alipay表数据");
 		Connection getConnetcion = (Connection) jdbc.getConnection();
-		String sql = "SELECT * from alipay limit ?,?";
+		String sql = "SELECT * from alipay ";
 		PreparedStatement pstmt;
 		List<alipayInfo> getAlipayInfoList = new ArrayList<alipayInfo>();
 		try {
 			pstmt = getConnetcion.prepareStatement(sql);
-			pstmt.setInt(1, (pageNo-1)*pageSize);//距离这一页的第一行数据，其前面有多少行数据
-			pstmt.setInt(2, pageSize);//每页有多少行
 			ResultSet rs = pstmt.executeQuery();
 			while (rs.next()) {
 				alipayInfo alipay = new alipayInfo();
 				alipay.setId(rs.getInt("Id"));
-				alipay.setAmount(rs.getFloat("Amount"));
+				alipay.setAmount(rs.getString("Amount"));
 				alipay.setBalanceOfPayments(rs.getString("BalanceOfPayments"));
 				alipay.setCommodityName(rs.getString("CommodityName"));
 				alipay.setMerchantOrderNumber(rs.getString("MerchantOrderNumber"));

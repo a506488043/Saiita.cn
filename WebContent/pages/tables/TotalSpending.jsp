@@ -40,14 +40,14 @@
   <![endif]-->
 </head>
 <body class="hold-transition skin-blue sidebar-mini">
-<section class="content">
+	<section class="content">
 	<div class="box">
 		<div class="box-header">
-			<h3 class="box-title">用户数据</h3>
+			<h3 class="box-title">总账单</h3>
 		</div>
 		<!-- /.box-header -->
 		<div class="box-body">
-			<table id="example1" class="table table-bordered table-striped">
+			<table id="example2" class="table table-bordered table-striped">
 				<thead>
 					<tr>
 						<th>编号</th>
@@ -60,54 +60,6 @@
 						<th>逆差</th>
 					</tr>
 				</thead>
-				<tbody>
-					<%
-					LogRecord log = new LogRecord();
-					HttpServletRequest req = (HttpServletRequest) request;
-					HttpServletResponse res = (HttpServletResponse) response;
-					session = req.getSession();
-					String username = (String) session.getAttribute("username");
-					log.log(username, request.getHeader("User-Agent"), request.getRemoteAddr(), "操作日志", "查询总账单", "2");
-						List<alipayStatisticsInfo> list = alipayStatistics.alipayStatisticsinfo();
-						for (int i = 0; i < list.size(); i++) {
-							alipayStatisticsInfo alipay = (alipayStatisticsInfo) list.get(i);
-					%>
-					<tr>
-						<td><%=alipay.getId()%></td>
-						<td><%=alipay.getProjects()%></td>
-						<td><%=alipay.getTotalDisbursement()%></td>
-						<td><%=alipay.getTotalExpenditure()%></td>
-						<td><%=alipay.getTotalRevenue()%></td>
-						<td><%=alipay.getGrossIncome()%></td>
-						<td><%=alipay.getCreditCardOverdraft()%></td>
-						<td><%=alipay.getDeficit()%></td>
-					</tr>
-					<%
-						}
-					%>
-
-				
-				</tbody>
-				<tfoot>
-					<%
-						List<alipayStatisticsInfo> totalist = Total.Total();
-						for (int i = 0; i < totalist.size(); i++) {
-							alipayStatisticsInfo total = (alipayStatisticsInfo) totalist.get(i);
-					%>
-					<tr>
-						<td><%=total.getId()%></td>
-						<td><%=total.getProjects()%></td>
-						<td><%=total.getTotalDisbursement()%></td>
-						<td><%=total.getTotalExpenditure()%></td>
-						<td><%=total.getTotalRevenue()%></td>
-						<td><%=total.getGrossIncome()%></td>
-						<td><%=total.getCreditCardOverdraft()%></td>
-						<td><%=total.getDeficit()%></td>
-					</tr>
-					<%
-						}
-					%>
-				</tfoot>
 			</table>
 			<div class="overlay" id="divprogressbar">
 				<i class="fa fa-refresh fa-spin"></i>
@@ -115,37 +67,27 @@
 		</div>
 		<!-- /.box-body -->
 	</div>
-	<!-- /.box -->
-	<section class="content">
-	<!-- Add the sidebar's background. This div must be placed
-       immediately after the control sidebar -->
+	<!-- /.box --> 
 	<div class="control-sidebar-bg"></div>
 
-	<!-- jQuery 2.2.3 -->
-	<script src="../../plugins/jQuery/jquery-2.2.3.min.js"></script>
-	<!-- Bootstrap 3.3.6 -->
-	<script src="../../bootstrap/js/bootstrap.min.js"></script>
-	<!-- DataTables -->
+	<!-- jQuery 2.2.3 --> <script
+		src="../../plugins/jQuery/jquery-2.2.3.min.js"></script> <!-- Bootstrap 3.3.6 -->
+	<script src="../../bootstrap/js/bootstrap.min.js"></script> <!-- DataTables -->
 	<script src="../../plugins/datatables/jquery.dataTables.min.js"></script>
 	<script src="../../plugins/datatables/dataTables.bootstrap.min.js"></script>
-	<!-- SlimScroll -->
-	<script src="../../plugins/slimScroll/jquery.slimscroll.min.js"></script>
-	<!-- FastClick -->
-	<script src="../../plugins/fastclick/fastclick.js"></script>
-	<!-- AdminLTE App -->
-	<script src="../../dist/js/app.min.js"></script>
-	<!-- AdminLTE for demo purposes -->
-	<script src="../../dist/js/demo.js"></script>
-	<!-- page script -->
-	<script type="text/javascript" language="JavaScript">
+	<!-- SlimScroll --> <script
+		src="../../plugins/slimScroll/jquery.slimscroll.min.js"></script> <!-- FastClick -->
+	<script src="../../plugins/fastclick/fastclick.js"></script> <!-- AdminLTE App -->
+	<script src="../../dist/js/app.min.js"></script> <!-- AdminLTE for demo purposes -->
+	<script src="../../dist/js/demo.js"></script> <!-- page script --> <script
+		type="text/javascript" language="JavaScript">
 		//: 判断网页是否加载完成   
 		document.onreadystatechange = function() {
 			if (document.readyState == "complete") {
 				document.getElementById('divprogressbar').style.display = 'none';
 			}
 		}
-	</script>
-	<script>
+	</script> <script>
 		$(function() {
 			$("#example1").DataTable();
 			$('#example2').DataTable({
@@ -154,9 +96,31 @@
 				"searching" : false,
 				"ordering" : true,
 				"info" : true,
-				"autoWidth" : false
+				"autoWidth" : false,
+				ajax : {
+					url : 'getTotalSpending',
+					dataSrc : ''
+				},
+				columns : [ {
+					data : 'id'
+				}, {
+					data : 'projects'
+				}, {
+					data : 'totalDisbursement'
+				}, {
+					data : 'totalExpenditure'
+				}, {
+					data : 'totalRevenue'
+				}, {
+					data : 'grossIncome'
+				}, {
+					data : 'creditCardOverdraft'
+				}, {
+					data : 'deficit'
+				}  ]
 			});
 		});
 	</script>
+	</section>
 </body>
 </html>

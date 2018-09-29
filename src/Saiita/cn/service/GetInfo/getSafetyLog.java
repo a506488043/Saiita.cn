@@ -36,13 +36,13 @@ public class getSafetyLog {
 		while (rs.next()) {
 			SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 			SafeLog safelist = new SafeLog();
-			safelist.setId(rs.getString("id"));
-			safelist.setUsername(rs.getString("username"));
 			safelist.setDatetime(sdf.format(rs.getLong("datetime")));
-			safelist.setOperation(rs.getString("operation"));
+			safelist.setUsername(rs.getString("username"));
 			safelist.setResult(rs.getString("result"));
+			safelist.setOperation(rs.getString("operation"));
 			safelist.setIp(rs.getString("ip"));
 			safelist.setBrowser(rs.getString("browser"));
+			
 			list.add(safelist);
 		}
 		pstmt.close();
@@ -61,11 +61,10 @@ public class getSafetyLog {
 		while (rs.next()) {
 			SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 			SafeLog safelist = new SafeLog();
-			safelist.setId(rs.getString("id"));
-			safelist.setUsername(rs.getString("username"));
 			safelist.setDatetime(sdf.format(rs.getLong("datetime")));
-			safelist.setOperation(rs.getString("operation"));
+			safelist.setUsername(rs.getString("username"));
 			safelist.setResult(rs.getString("result"));
+			safelist.setOperation(rs.getString("operation"));
 			safelist.setIp(rs.getString("ip"));
 			safelist.setBrowser(rs.getString("browser"));
 			list.add(safelist);

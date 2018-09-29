@@ -27,7 +27,22 @@
     <servlet-name>GetAllAlpayInfo</servlet-name>
     <url-pattern>/GetAllAlpayInfo.do</url-pattern>
   </servlet-mapping>
-  
+  <servlet>
+    <servlet-name>getSafeLog</servlet-name>
+    <servlet-class>Saiita.cn.action.GetAllAlpayInfo</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>getSafeLog</servlet-name>
+    <url-pattern>/getSafeLog.do</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>getTotalSpending</servlet-name>
+    <servlet-class>Saiita.cn.action.getTotalSpending</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>getTotalSpending</servlet-name>
+    <url-pattern>/getTotalSpending.do</url-pattern>
+  </servlet-mapping>
   <filter>
     <filter-name>LoginFilter</filter-name>
     <filter-class>Saiita.cn.filter.LoginFilter</filter-class>

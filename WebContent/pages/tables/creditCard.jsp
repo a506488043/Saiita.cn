@@ -4,6 +4,7 @@
 <%@page import="Saiita.cn.entity.SafeLog"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="java.util.List"%>
+<%@page import="Saiita.cn.service.GetInfo.Log.LogRecord"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 
 <html>
@@ -38,23 +39,22 @@
   <![endif]-->
 </head>
 <body class="hold-transition skin-blue sidebar-mini">
+	<section class="content">
 	<div class="row">
 		<div class="col-xs-12">
 			<div class="box">
 				<div class="box-header">
-					<h3 class="box-title">操作日志</h3>
+					<h3 class="box-title">登陆日志</h3>
 				</div>
 				<!-- /.box-header -->
 				<div class="overlay" id="divprogressbar">
 					<i class="fa fa-refresh fa-spin"> </i>
 				</div>
 				<div class="box-body">
-
 					<table id="example2" class="table table-bordered table-striped">
 						<thead>
 							<tr>
-								<!-- <th>Id</th>-->
-								<th>操作时间</th>
+								<th>登陆时间</th>
 								<th>用户名</th>
 								<th>结果</th>
 								<th>登陆IP</th>
@@ -69,17 +69,18 @@
 		</div>
 		<!-- /.col -->
 	</div>
+	</section>
 	<!-- /.box -->
 	<!-- Add the sidebar's background. This div must be placed
        immediately after the control sidebar -->
 	<div class="control-sidebar-bg"></div>
 
 	<!-- jQuery 2.2.3 -->
-	<script src="../../plugins/jQuery/jquery-2.2.3.min.js"></script>
+	<script src="../../plugins/jQuery/jquery-3.3.1.js"></script>
 	<!-- Bootstrap 3.3.6 -->
 	<script src="../../bootstrap/js/bootstrap.min.js"></script>
 	<!-- DataTables -->
-	<script src="../../plugins/datatables/jquery.dataTables.min.js"></script>
+	<script src="../../plugins/datatables/jquery.dataTables.min2.js"></script>
 	<script src="../../plugins/datatables/dataTables.bootstrap.min.js"></script>
 	<!-- SlimScroll -->
 	<script src="../../plugins/slimScroll/jquery.slimscroll.min.js"></script>
@@ -92,14 +93,8 @@
 	<!-- page script -->
 	<script>
 		$(function() {
-			$("#example1").DataTable();
 			$('#example2').DataTable({
-				"paging" : true,
-				"lengthChange" : true,
-				"searching" : true,
-				"ordering" : false,
-				"info" : true,
-				"autoWidth" : false,
+				//"ajax" : "getSafeLog",
 				ajax : {
 					url : 'getSafeLog',
 					dataSrc : ''

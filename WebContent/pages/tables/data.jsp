@@ -48,7 +48,7 @@
 				</div>
 				<!-- /.box-header -->
 				<div class="box-body">
-					<table id="example1" class="table table-bordered table-striped">
+					<table id="example2" class="table table-bordered table-striped">
 						<thead>
 							<tr>
 								<th>Id</th>
@@ -60,31 +60,6 @@
 								<th>最近登陆成功时间</th>
 							</tr>
 						</thead>
-						<tbody>
-							<%
-								LogRecord log1 = new LogRecord();
-								HttpServletRequest req = (HttpServletRequest) request;
-								HttpServletResponse res = (HttpServletResponse) response;
-								session = req.getSession();
-								String username = (String) session.getAttribute("username");
-								log1.log(username, request.getHeader("User-Agent"), request.getRemoteAddr(), "操作日志", "查询用户信息列表", "2");
-								List<UserInfo> list = getAllUserInfo.getAllUser();
-								for (int i = 0; i < list.size(); i++) {
-									UserInfo user = (UserInfo) list.get(i);
-							%>
-							<tr>
-								<td><%=user.getId()%></td>
-								<td><%=user.getUsername()%></td>
-								<td><%=user.getRole()%></td>
-								<td><%=user.getLoginfailure()%></td>
-								<td><%=user.getLoginfailureDate()%></td>
-								<td><%=user.getLoginSuccess()%></td>
-								<td><%=user.getLastLoginTime()%></td>
-							</tr>
-							<%
-								}
-							%>
-						</tbody>
 					</table>
 				</div>
 				<!-- /.box-body -->
@@ -124,7 +99,26 @@
 				"searching" : false,
 				"ordering" : true,
 				"info" : true,
-				"autoWidth" : false
+				"autoWidth" : false,
+				ajax : {
+					url : 'GetAllUserInfo',
+					dataSrc : ''
+				},
+				columns : [ {
+					data : 'id'
+				}, {
+					data : 'username'
+				}, {
+					data : 'role'
+				}, {
+					data : 'loginfailure'
+				},  {
+					data : 'loginfailureDate'
+				},{
+					data : 'loginSuccess'
+				},{
+					data : 'lastLoginTime'
+				}]
 			});
 		});
 	</script>

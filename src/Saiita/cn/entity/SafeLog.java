@@ -1,8 +1,6 @@
 package Saiita.cn.entity;
 
 public class SafeLog {
-	// id
-	String id;
 	// 用户名
 	String username;
 	// 操作时间
@@ -17,16 +15,7 @@ public class SafeLog {
 	String ip;
 	// 浏览器类型
 	String browser;
-	// 浏览器
-	String BrowserType;
 
-	public String getId() {
-		return id;
-	}
-
-	public void setId(String id) {
-		this.id = id;
-	}
 
 	public String getUsername() {
 		return username;
@@ -83,13 +72,4 @@ public class SafeLog {
 	public void setBrowser(String browser) {
 		this.browser = browser;
 	}
-
-	public String getBrowserType() {
-		return BrowserType;
-	}
-
-	public void setBrowserType(String browserType) {
-		BrowserType = browserType;
-	}
-
 }

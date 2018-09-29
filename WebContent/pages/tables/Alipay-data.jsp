@@ -38,6 +38,7 @@
   <![endif]-->
 </head>
 <body class="hold-transition skin-blue sidebar-mini">
+<section class="content">
 	<div class="row">
 		<div class="col-xs-12">
 			<div class="box">
@@ -63,34 +64,6 @@
 								<th>交易状态</th>
 							</tr>
 						</thead>
-						<tbody>
-							<%
-								LogRecord log = new LogRecord();
-								HttpServletRequest req = (HttpServletRequest) request;
-								HttpServletResponse res = (HttpServletResponse) response;
-								session = req.getSession();
-								String username = (String) session.getAttribute("username");
-								log.log(username, request.getHeader("User-Agent"), request.getRemoteAddr(), "操作日志", "查询支付宝账单", "2");
-
-								List<alipayInfo> list = getAllAlpayInfo.getAllAlpay(1,20);
-								for (int i = 0; i < list.size(); i++) {
-									alipayInfo alipay = list.get(i);
-							%>
-							<tr>
-								<td><%=alipay.getId()%></td>
-								<td><%=alipay.getRecentModificationTime()%></td>
-								<td><%=alipay.getSourceTransation()%></td>
-								<td><%=alipay.getTheDealingParty()%></td>
-								<td><%=alipay.getCommodityName()%></td>
-								<td><%=alipay.getAmount()%></td>
-								<td><%=alipay.getBalanceOfPayments()%></td>
-								<td><%=alipay.getTransationStatus()%></td>
-							</tr>
-							<%
-								}
-							%>
-						</tbody>
-						
 					</table>
 				</div>
 			</div>
@@ -98,6 +71,7 @@
 			
 		</div>
 	</div>
+	</section>
 	<!-- jQuery 2.2.3 -->
 	<script src="../../plugins/jQuery/jquery-2.2.3.min.js"></script>
 	<!-- Bootstrap 3.3.6 -->
@@ -117,13 +91,35 @@
 	<script>
 		$(function() {
 			$("#example1").DataTable();
-			$('#example2').DataTable({
-				"paging" : false,
-				"lengthChange" : false,
-				"searching" : false,
-				"ordering" : false,
-				"info" : false,
-				"autoWidth" : false
+				$('#example2').DataTable({
+					"paging" : true,
+					"lengthChange" : false,
+					"searching" : true,
+					"ordering" : false,
+					"info" : true,
+					"autoWidth" : true,
+					ajax : {
+						url : 'GetAllAlpayInfo',
+						dataSrc : ''
+					},
+					columns : [ {
+						data : 'id'
+					}, {
+						data : 'paymentTime'
+					}, {
+						data : 'sourceTransation'
+					}, {
+						data : 'theDealingParty'
+					},  {
+						data : 'commodityName'
+					},{
+						data : 'amount'
+					},{
+						data : 'balanceOfPayments'
+					},
+					{
+						data : 'transationStatus'
+					}]
 			});
 		});
 	</script>

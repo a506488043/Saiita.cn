@@ -47,27 +47,10 @@ public class GetAllAlpayInfo extends HttpServlet {
 			throws ServletException, IOException {
 		request.setCharacterEncoding("utf-8");
 		response.setCharacterEncoding("utf-8");
-		// 获取参数
-		int PAGESIZE = 10;
-		int pageNo = 1;
-		String s = request.getParameter("pgno");
-		if (s != null) {
-			pageNo = Integer.parseInt(s);
-		}
 		try {
-			int pageCount = new getPageCount().PageCount(PAGESIZE);//获得总页数
-			List<alipayInfo> list = getAllAlpayInfo.getAllAlpay(pageNo, PAGESIZE);//获得指定页数据
-			int currentPage = pageNo;
-			request.setAttribute("currentPage", currentPage);
-			request.setAttribute("pageCount", pageCount);
-			request.setAttribute("cars", list);
-			int pagePrev = pageNo > 1 ? pageNo - 1 : 1;// 上一页
-			int pageNext = pageNo < pageCount ? pageNo + 1 : pageCount;// 下一页
-			request.setAttribute("pageNow", pageNo);
-			request.setAttribute("pagePrev", pagePrev);
-			request.setAttribute("pageNext", pageNext);
-			// JSONArray getAllAlpayInfo = JSONArray.fromObject(list);
-			// response.getWriter().println(getAllAlpayInfo);
+			List<alipayInfo> list = getAllAlpayInfo.getAllAlpay();//获得指定页数据
+			JSONArray getAllAlpayInfo = JSONArray.fromObject(list);
+			 response.getWriter().println(getAllAlpayInfo);
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
