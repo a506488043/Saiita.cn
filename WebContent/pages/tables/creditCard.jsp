@@ -51,14 +51,21 @@
 					<i class="fa fa-refresh fa-spin"> </i>
 				</div>
 				<div class="box-body">
+					<div>
+						<input type="text" placeholder="输入金额" id="amount">
+						<button type="submit" onclick="rsalogin();">确定</button>
+					</div>
 					<table id="example2" class="table table-bordered table-striped">
 						<thead>
 							<tr>
-								<th>登陆时间</th>
-								<th>用户名</th>
-								<th>结果</th>
-								<th>登陆IP</th>
-								<th>浏览器类型</th>
+								<th>ID</th>
+								<th>期数</th>
+								<th>费率</th>
+								<th>每期本金</th>
+								<th>单期手续费</th>
+								<th>本金+手续费</th>
+								<th>每日手续费</th>
+								<th>总手续费</th>
 							</tr>
 						</thead>
 					</table>
@@ -92,23 +99,59 @@
 	<script src="../../dist/js/demo.js"></script>
 	<!-- page script -->
 	<script>
+		function rsalogin() {
+			var amount = $("#amount").val();
+			alert(amount);
+			var button = $("#button").val(amount);
+			alert(button);
+		}
 		$(function() {
 			$('#example2').DataTable({
+				"bProcessing" : true, //DataTables载入数据时，是否显示‘进度’提示 
+				"paging" : false,
+				"lengthChange" : false,
+				"searching" : false,
+				"ordering" : true,
+				"info" : false,
+				"autoWidth" : true,
+				"deferRender" : true,
 				//"ajax" : "getSafeLog",
 				ajax : {
-					url : 'getSafeLog',
-					dataSrc : ''
+					url : 'getcreditCard',
+					type : 'get',
+					//data:"...",//设置发送给服务器的数据（名称、格式）  
+					data : {
+						"amount" : $('#button').val(),
+					},
+					dataSrc : "",//这是从服务器接受的数据（名称、格式）  
+				//success:'...'//回调函数。不要修改！DT会默认使用它。想改交互参数找前两项就行  
 				},
+
+				//"columnDefs" : [ {
+				//	"targets" : 0,//这一列是id，但是不想再前端显示，"visible": false,表示隐藏
+				//	"visible" : true,
+				//}, {
+				//	targets : 0,//把第九列的样式改为超链接
+				//	render : function(data, type, row) {
+				//		return '<input type="text" value="******" id="password">';
+				//	}
+				//} ],
 				columns : [ {
-					data : 'datetime'
+					data : 'id'
 				}, {
-					data : 'username'
+					data : 'nper'
 				}, {
-					data : 'result'
+					data : 'rate'
 				}, {
-					data : 'ip'
+					data : 'each_of_the_principal'
 				}, {
-					data : 'browser'
+					data : 'single_handling_charge'
+				}, {
+					data : 'principal_handling_fee'
+				}, {
+					data : 'daily_handling_charge'
+				}, {
+					data : 'total_fee'
 				} ]
 			});
 		});

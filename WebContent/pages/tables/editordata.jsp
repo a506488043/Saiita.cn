@@ -138,5 +138,13 @@
 			});
 		});
 	</script>
+	<script type="text/javascript" language="JavaScript">
+		//: 判断网页是否加载完成   
+		document.onreadystatechange = function() {
+			if (document.readyState == "complete") {
+				document.getElementById('divprogressbar').style.display = 'none';
+			}
+		}
+	</script>
 </body>
 </html>

@@ -54,7 +54,8 @@
 				</div>
 				<div class="form-group has-feedback">
 					<input type="password" class="form-control" placeholder="密码"
-						id="password"> <input type="hidden" id="pwd"
+						id="password"> 
+						<input type="hidden" id="pwd"
 						name="user_psw">
 				</div>
 				<div class="row">

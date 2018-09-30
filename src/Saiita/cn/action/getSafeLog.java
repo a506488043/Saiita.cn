@@ -39,6 +39,7 @@ public class getSafeLog extends HttpServlet {
 		logger.info("µÇÂ½ÈÕÖ¾");
 		request.setCharacterEncoding("utf-8");
 		response.setCharacterEncoding("utf-8");
+		System.out.println(request.getParameter("voucherid"));
 		// TODO Auto-generated method stub
 		try {
 			List<SafeLog> list = getSafetyLog.getLogInfo();

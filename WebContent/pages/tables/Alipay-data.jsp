@@ -38,7 +38,7 @@
   <![endif]-->
 </head>
 <body class="hold-transition skin-blue sidebar-mini">
-<section class="content">
+	<section class="content">
 	<div class="row">
 		<div class="col-xs-12">
 			<div class="box">
@@ -49,7 +49,7 @@
 				<div class="overlay" id="divprogressbar">
 					<i class="fa fa-refresh fa-spin"> </i>
 				</div>
-				
+
 				<div class="box-body">
 					<table id="example2" class="table table-bordered table-striped">
 						<thead>
@@ -68,7 +68,7 @@
 				</div>
 			</div>
 			<!-- BOX -->
-			
+
 		</div>
 	</div>
 	</section>
@@ -91,35 +91,37 @@
 	<script>
 		$(function() {
 			$("#example1").DataTable();
-				$('#example2').DataTable({
-					"paging" : true,
-					"lengthChange" : false,
-					"searching" : true,
-					"ordering" : false,
-					"info" : true,
-					"autoWidth" : true,
-					ajax : {
-						url : 'GetAllAlpayInfo',
-						dataSrc : ''
-					},
-					columns : [ {
-						data : 'id'
-					}, {
-						data : 'paymentTime'
-					}, {
-						data : 'sourceTransation'
-					}, {
-						data : 'theDealingParty'
-					},  {
-						data : 'commodityName'
-					},{
-						data : 'amount'
-					},{
-						data : 'balanceOfPayments'
-					},
-					{
-						data : 'transationStatus'
-					}]
+			$('#example2').DataTable({
+				"bProcessing" : true, //DataTables载入数据时，是否显示‘进度’提示 
+				"paging" : true,
+				"lengthChange" : false,
+				"searching" : true,
+				"ordering" : false,
+				"info" : true,
+				"autoWidth" : true,
+				"deferRender" : true,
+				ajax : {
+					url : 'GetAllAlpayInfo',
+					dataSrc : '',
+					method : 'get'
+				},
+				columns : [ {
+					data : 'id'
+				}, {
+					data : 'paymentTime'
+				}, {
+					data : 'sourceTransation'
+				}, {
+					data : 'theDealingParty'
+				}, {
+					data : 'commodityName'
+				}, {
+					data : 'amount'
+				}, {
+					data : 'balanceOfPayments'
+				}, {
+					data : 'transationStatus'
+				} ]
 			});
 		});
 	</script>
