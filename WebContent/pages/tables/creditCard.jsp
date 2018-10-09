@@ -39,7 +39,6 @@
   <![endif]-->
 </head>
 <body class="hold-transition skin-blue sidebar-mini">
-	<section class="content">
 	<div class="row">
 		<div class="col-xs-12">
 			<div class="box">
@@ -53,7 +52,7 @@
 				<div class="box-body">
 					<div>
 						<input type="text" placeholder="输入金额" id="amount">
-						<button type="submit" onclick="rsalogin();">确定</button>
+						<button type="submit" onclick="rs();" id="button" name="">计算</button>
 					</div>
 					<table id="example2" class="table table-bordered table-striped">
 						<thead>
@@ -76,7 +75,6 @@
 		</div>
 		<!-- /.col -->
 	</div>
-	</section>
 	<!-- /.box -->
 	<!-- Add the sidebar's background. This div must be placed
        immediately after the control sidebar -->
@@ -99,15 +97,9 @@
 	<script src="../../dist/js/demo.js"></script>
 	<!-- page script -->
 	<script>
-		function rsalogin() {
-			var amount = $("#amount").val();
-			alert(amount);
-			var button = $("#button").val(amount);
-			alert(button);
-		}
-		$(function() {
+		function rs() {
 			$('#example2').DataTable({
-				"bProcessing" : true, //DataTables载入数据时，是否显示‘进度’提示 
+				"bProcessing" : false, //DataTables载入数据时，是否显示‘进度’提示 
 				"paging" : false,
 				"lengthChange" : false,
 				"searching" : false,
@@ -115,13 +107,14 @@
 				"info" : false,
 				"autoWidth" : true,
 				"deferRender" : true,
+				"destroy": true,
 				//"ajax" : "getSafeLog",
 				ajax : {
 					url : 'getcreditCard',
 					type : 'get',
 					//data:"...",//设置发送给服务器的数据（名称、格式）  
 					data : {
-						"amount" : $('#button').val(),
+						"amount" : $('#amount').val(),
 					},
 					dataSrc : "",//这是从服务器接受的数据（名称、格式）  
 				//success:'...'//回调函数。不要修改！DT会默认使用它。想改交互参数找前两项就行  
@@ -154,7 +147,7 @@
 					data : 'total_fee'
 				} ]
 			});
-		});
+		}
 	</script>
 	<script type="text/javascript" language="JavaScript">
 		//: 判断网页是否加载完成   

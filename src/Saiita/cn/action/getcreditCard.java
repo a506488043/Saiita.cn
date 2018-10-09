@@ -37,22 +37,16 @@ public class getcreditCard extends HttpServlet {
 		// TODO Auto-generated method stub
 		request.setCharacterEncoding("utf-8");
 		response.setCharacterEncoding("utf-8");
-		System.out.println(request.getParameter("amount"));
+		System.out.println("测试:"+request.getParameter("amount"));
 		try {
 			List<creditCard> list = getCreditCard.getCreditCardinfo();// 获得指定页数据
 			JSONArray cardinfo = JSONArray.fromObject(list);
 			response.getWriter().println(cardinfo);
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}
-
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
-	 *      response)
-	 */
-
+	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 	}

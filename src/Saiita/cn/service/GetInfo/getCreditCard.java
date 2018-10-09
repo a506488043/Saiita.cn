@@ -16,7 +16,6 @@ public class getCreditCard {
 	public static Log logger = LogFactory.getLog(getCreditCard.class);
 
 	public static List<creditCard> getCreditCardinfo() throws SQLException {
-		logger.info("1");
 		getConnetcion conn = new getConnetcion();
 		List<creditCard> list = new ArrayList<creditCard>();
 		PreparedStatement pstmt;
@@ -26,14 +25,38 @@ public class getCreditCard {
 		ResultSet rs = pstmt.executeQuery();
 		while (rs.next()) {
 			creditCard card = new creditCard();
-			card.setDaily_handling_charge(rs.getString("Daily_handling_charge"));
-			card.setEach_of_the_principal(rs.getString("Each_of_the_principal"));
+			card.setDaily_handling_charge(rs.getFloat("Daily_handling_charge"));
+			card.setEach_of_the_principal(rs.getBigDecimal("Each_of_the_principal"));
 			card.setId(rs.getString("id"));
-			card.setNper(rs.getString("nper"));
-			card.setPrincipal_handling_fee(rs.getString("Principal_handling_fee"));
+			card.setNper(rs.getInt("nper"));
+			card.setPrincipal_handling_fee(rs.getBigDecimal("Principal_handling_fee"));
 			card.setRate(rs.getString("rate"));
-			card.setSingle_handling_charge(rs.getString("Single_handling_charge"));
-			card.setTotal_fee(rs.getString("total_fee"));
+			card.setSingle_handling_charge(rs.getBigDecimal("Single_handling_charge"));
+			card.setTotal_fee(rs.getFloat("total_fee"));
+			list.add(card);
+		}
+		;
+		return list;
+	}
+	
+	public static List<creditCard> calculate() throws SQLException {
+		getConnetcion conn = new getConnetcion();
+		List<creditCard> list = new ArrayList<creditCard>();
+		PreparedStatement pstmt;
+		// 计算统计表amountTotal
+		String sql = "SELECT* from creditCard";
+		pstmt = conn.Connetcion().prepareStatement(sql);
+		ResultSet rs = pstmt.executeQuery();
+		while (rs.next()) {
+			creditCard card = new creditCard();
+			card.setDaily_handling_charge(rs.getInt("Daily_handling_charge"));
+			card.setEach_of_the_principal(rs.getBigDecimal("Each_of_the_principal"));
+			card.setId(rs.getString("id"));
+			card.setNper(rs.getInt("nper"));
+			card.setPrincipal_handling_fee(rs.getBigDecimal("Principal_handling_fee"));
+			card.setRate(rs.getString("rate"));
+			card.setSingle_handling_charge(rs.getBigDecimal("Single_handling_charge"));
+			card.setTotal_fee(rs.getInt("total_fee"));
 			list.add(card);
 		}
 		;
