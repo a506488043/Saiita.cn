@@ -1,6 +1,7 @@
 package Saiita.cn.action;
 
 import java.io.IOException;
+import java.math.BigDecimal;
 import java.util.List;
 
 import javax.servlet.ServletException;
@@ -37,8 +38,8 @@ public class getcreditCard extends HttpServlet {
 		// TODO Auto-generated method stub
 		request.setCharacterEncoding("utf-8");
 		response.setCharacterEncoding("utf-8");
-		System.out.println("测试:"+request.getParameter("amount"));
 		try {
+			getCreditCard.calculate(request.getParameter("amount"));
 			List<creditCard> list = getCreditCard.getCreditCardinfo();// 获得指定页数据
 			JSONArray cardinfo = JSONArray.fromObject(list);
 			response.getWriter().println(cardinfo);

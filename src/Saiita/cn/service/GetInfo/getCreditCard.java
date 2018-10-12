@@ -1,5 +1,6 @@
 package Saiita.cn.service.GetInfo;
 
+import java.math.BigDecimal;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -30,7 +31,12 @@ public class getCreditCard {
 			card.setId(rs.getString("id"));
 			card.setNper(rs.getInt("nper"));
 			card.setPrincipal_handling_fee(rs.getBigDecimal("Principal_handling_fee"));
-			card.setRate(rs.getString("rate"));
+
+			BigDecimal nper = new BigDecimal(Double.toString(100.00));
+			BigDecimal rate = rs.getBigDecimal("rate");
+			String result = String.valueOf(rate.multiply(nper).doubleValue());
+			System.out.println(result + "%");
+			card.setRate(result+ "%");
 			card.setSingle_handling_charge(rs.getBigDecimal("Single_handling_charge"));
 			card.setTotal_fee(rs.getFloat("total_fee"));
 			list.add(card);
@@ -38,16 +44,18 @@ public class getCreditCard {
 		;
 		return list;
 	}
-	
-	public static List<creditCard> calculate() throws SQLException {
+
+	public static List<creditCard> calculate(String amount) throws SQLException {
+		BigDecimal dec = new BigDecimal(amount);
 		getConnetcion conn = new getConnetcion();
 		List<creditCard> list = new ArrayList<creditCard>();
 		PreparedStatement pstmt;
 		// 计算统计表amountTotal
-		String sql = "SELECT* from creditCard";
+		String sql = "INSERT INTO creditCard (username,datetime,operation,result,safetylog,ip,browser,BrowserType) VALUES(?,?,?,?,?,?,?,?);";
 		pstmt = conn.Connetcion().prepareStatement(sql);
 		ResultSet rs = pstmt.executeQuery();
 		while (rs.next()) {
+
 			creditCard card = new creditCard();
 			card.setDaily_handling_charge(rs.getInt("Daily_handling_charge"));
 			card.setEach_of_the_principal(rs.getBigDecimal("Each_of_the_principal"));
@@ -63,4 +71,7 @@ public class getCreditCard {
 		return list;
 	}
 
+	public static void main(String[] args) throws SQLException {
+		getCreditCardinfo();
+	}
 }

@@ -31,7 +31,6 @@ public class creditCard {
 		this.rate = rate;
 	}
 
-
 	public BigDecimal getEach_of_the_principal() {
 		return Each_of_the_principal;
 	}

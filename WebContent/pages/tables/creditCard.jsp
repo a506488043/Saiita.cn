@@ -54,6 +54,20 @@
 						<input type="text" placeholder="输入金额" id="amount">
 						<button type="submit" onclick="rs();" id="button" name="">计算</button>
 					</div>
+					<table id="example1" class="table table-bordered table-striped">
+				<thead>
+					<tr>
+						<th>编号</th>
+						<th>项目</th>
+						<th>总支出数</th>
+						<th>总支出(元)</th>
+						<th>总收入数</th>
+						<th>总收入(元)</th>
+						<th>信用卡/网商/京东/花呗</th>
+						<th>逆差</th>
+					</tr>
+				</thead>
+			</table>
 					<table id="example2" class="table table-bordered table-striped">
 						<thead>
 							<tr>
@@ -97,6 +111,39 @@
 	<script src="../../dist/js/demo.js"></script>
 	<!-- page script -->
 	<script>
+		$(function() {
+			$('#example1').DataTable({
+				"paging" : false,
+				"lengthChange" : false,
+				"searching" : false,
+				"ordering" : false,
+				"info" : false,
+				"autoWidth" : false,
+				ajax : {
+					url : 'getTotalSpending',
+					dataSrc : ''
+				},
+				columns : [ {
+					data : 'id'
+				}, {
+					data : 'projects'
+				}, {
+					data : 'totalDisbursement'
+				}, {
+					data : 'totalExpenditure'
+				}, {
+					data : 'totalRevenue'
+				}, {
+					data : 'grossIncome'
+				}, {
+					data : 'creditCardOverdraft'
+				}, {
+					data : 'deficit'
+				}  ]
+			});
+		});
+	</script>
+	<script>
 		function rs() {
 			$('#example2').DataTable({
 				"bProcessing" : false, //DataTables载入数据时，是否显示‘进度’提示 
@@ -107,7 +154,7 @@
 				"info" : false,
 				"autoWidth" : true,
 				"deferRender" : true,
-				"destroy": true,
+				"destroy" : true,
 				//"ajax" : "getSafeLog",
 				ajax : {
 					url : 'getcreditCard',
