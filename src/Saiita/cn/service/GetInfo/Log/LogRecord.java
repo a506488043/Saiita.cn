@@ -22,7 +22,6 @@ public class LogRecord {
 	static JDBC jdbc = new JDBC();
 	public static Log logger = LogFactory.getLog(LogRecord.class);
 	PreparedStatement pstmt = null;
-	String sql = "INSERT INTO safetyLog (username,datetime,operation,result,safetylog,ip,browser,BrowserType) VALUES(?,?,?,?,?,?,?,?);";
 	// 获取浏览器类型
 	static Browser getBrowser = new Browser();
 	// 获取系统时间
@@ -39,8 +38,10 @@ public class LogRecord {
 			String browser, String browserType) throws SQLException {
 		logger.info("登陆日志记录");
 		// 连接数据库
+		String sql = "INSERT INTO safetyLog (username,datetime,operation,result,safetylog,ip,browser,BrowserType) VALUES(?,?,?,?,?,?,?,?);";
 		Connection getConnetcion = (Connection) jdbc.getConnection();
 		pstmt = getConnetcion.prepareStatement(sql);
+		
 		pstmt.setString(1, username);
 		pstmt.setLong(2, datetime);
 		pstmt.setString(3, result);

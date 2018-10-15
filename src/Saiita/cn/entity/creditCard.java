@@ -3,25 +3,29 @@ package Saiita.cn.entity;
 import java.math.BigDecimal;
 
 public class creditCard {
-	String id;
-	//期数
-	int nper;
-	//费率
+	int id;
+	// 期数
+	String nper;
+	// 费率
 	String rate;
-	//每期本金
+	// 每期本金
 	BigDecimal Each_of_the_principal;
-	//单期手续费
+	// 单期手续费
 	BigDecimal Single_handling_charge;
-	//本金+手续费
+	// 本金+手续费
 	BigDecimal Principal_handling_fee;
-	public int getNper() {
+	// 每日手续费
+	float Daily_handling_charge;
+	// 总手续费
+	float total_fee;
+
+	public String getNper() {
 		return nper;
 	}
 
-	public void setNper(int nper) {
+	public void setNper(String nper) {
 		this.nper = nper;
 	}
-
 
 	public String getRate() {
 		return rate;
@@ -71,22 +75,12 @@ public class creditCard {
 		this.total_fee = total_fee;
 	}
 
-	//每日手续费
-	float Daily_handling_charge;
-	//总手续费
-	float total_fee;
-
-	public String getId() {
+	public int getId() {
 		return id;
 	}
 
-	public void setId(String id) {
+	public void setId(int id) {
 		this.id = id;
 	}
-
-	
-
-	
-
 
 }
