@@ -15,9 +15,9 @@ public class creditCard {
 	// 本金+手续费
 	BigDecimal Principal_handling_fee;
 	// 每日手续费
-	float Daily_handling_charge;
+	BigDecimal Daily_handling_charge;
 	// 总手续费
-	float total_fee;
+	BigDecimal total_fee;
 
 	public String getNper() {
 		return nper;
@@ -59,19 +59,19 @@ public class creditCard {
 		Principal_handling_fee = principal_handling_fee;
 	}
 
-	public float getDaily_handling_charge() {
+	public BigDecimal getDaily_handling_charge() {
 		return Daily_handling_charge;
 	}
 
-	public void setDaily_handling_charge(float daily_handling_charge) {
+	public void setDaily_handling_charge(BigDecimal daily_handling_charge) {
 		Daily_handling_charge = daily_handling_charge;
 	}
 
-	public float getTotal_fee() {
+	public BigDecimal getTotal_fee() {
 		return total_fee;
 	}
 
-	public void setTotal_fee(float total_fee) {
+	public void setTotal_fee(BigDecimal total_fee) {
 		this.total_fee = total_fee;
 	}
 

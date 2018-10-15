@@ -54,6 +54,21 @@
 						<input type="text" placeholder="输入金额" id="amount">
 						<button type="submit" onclick="rs();" id="button" name="">计算</button>
 					</div>
+					<table id="example2" class="table table-bordered table-striped">
+						<thead>
+							<tr>
+								<th>ID</th>
+								<th>期数</th>
+								<th>费率</th>
+								<th>每期本金</th>
+								<th>单期手续费</th>
+								<th>本金+手续费</th>
+								<th>每日手续费</th>
+								<th>总手续费</th>
+								<!-- <th>操作</th> -->
+							</tr>
+						</thead>
+					</table>
 					<table id="example1" class="table table-bordered table-striped">
 				<thead>
 					<tr>
@@ -68,20 +83,6 @@
 					</tr>
 				</thead>
 			</table>
-					<table id="example2" class="table table-bordered table-striped">
-						<thead>
-							<tr>
-								<th>ID</th>
-								<th>期数</th>
-								<th>费率</th>
-								<th>每期本金</th>
-								<th>单期手续费</th>
-								<th>本金+手续费</th>
-								<th>每日手续费</th>
-								<th>总手续费</th>
-							</tr>
-						</thead>
-					</table>
 				</div>
 				<!-- /.box-body -->
 			</div>

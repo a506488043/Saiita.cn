@@ -17,6 +17,8 @@ public class getCreditCard {
 	public static Log logger = LogFactory.getLog(getCreditCard.class);
 	static getConnetcion conn = new getConnetcion();
 	static PreparedStatement pstmt;
+	static String multiple = "100";
+	static String days = "100";
 
 	public static List<creditCard> getCreditCardinfo() throws SQLException {
 		List<creditCard> list = new ArrayList<creditCard>();
@@ -27,7 +29,7 @@ public class getCreditCard {
 		ResultSet rs = pstmt.executeQuery();
 		while (rs.next()) {
 			creditCard card = new creditCard();
-			card.setDaily_handling_charge(rs.getFloat("Daily_handling_charge"));
+			card.setDaily_handling_charge(rs.getBigDecimal("Daily_handling_charge"));
 			card.setEach_of_the_principal(rs.getBigDecimal("Each_of_the_principal"));
 			card.setId(rs.getInt("id"));
 
@@ -41,7 +43,7 @@ public class getCreditCard {
 			card.setRate(result + "%");
 
 			card.setSingle_handling_charge(rs.getBigDecimal("Single_handling_charge"));
-			card.setTotal_fee(rs.getFloat("total_fee"));
+			card.setTotal_fee(rs.getBigDecimal("total_fee"));
 			list.add(card);
 		}
 		;
@@ -67,95 +69,41 @@ public class getCreditCard {
 						+ "total_fee= ? " + "where id='" + cred.getId() + "'";
 
 				pstmt = conn.Connetcion().prepareStatement(sql);
-				
-				//期数
-				String nper=cred.getNper();
-				String result =nper.replaceAll("期", "");
-				//费率
-				String rate=cred.getRate();
-				System.out.println(rate);
-				switch (cred.getId()) {
-				case 1:
-					pstmt.setBigDecimal(1, (new BigDecimal(amount)).divide(new BigDecimal(rate),2,
-							BigDecimal.ROUND_HALF_UP));
-					pstmt.setBigDecimal(2, (new BigDecimal(amount).multiply(new BigDecimal(result))).setScale(2,
-							BigDecimal.ROUND_HALF_UP));
-					pstmt.setBigDecimal(3, new BigDecimal(amount));
-					pstmt.setBigDecimal(4, new BigDecimal(amount));
-					pstmt.setBigDecimal(5, new BigDecimal(amount));
-					break;
-				case 2:
-					pstmt.setBigDecimal(1, (new BigDecimal(amount)).setScale(2,
-							BigDecimal.ROUND_HALF_UP));
-					pstmt.setBigDecimal(2, (new BigDecimal(amount).multiply(new BigDecimal(result))).setScale(2,
-							BigDecimal.ROUND_HALF_UP));
-					pstmt.setBigDecimal(3, new BigDecimal(amount));
-					pstmt.setBigDecimal(4, new BigDecimal(amount));
-					pstmt.setBigDecimal(5, new BigDecimal(amount));
-					break;
-				case 3:
-					pstmt.setBigDecimal(1, (new BigDecimal(amount)).setScale(2,
-							BigDecimal.ROUND_HALF_UP));
-					pstmt.setBigDecimal(2, (new BigDecimal(amount).multiply(new BigDecimal(result))).setScale(2,
-							BigDecimal.ROUND_HALF_UP));
-					pstmt.setBigDecimal(3, new BigDecimal(amount));
-					pstmt.setBigDecimal(4, new BigDecimal(amount));
-					pstmt.setBigDecimal(5, new BigDecimal(amount));
-					break;
-				case 4:
-					pstmt.setBigDecimal(1, (new BigDecimal(amount)).setScale(2,
-							BigDecimal.ROUND_HALF_UP));
-					pstmt.setBigDecimal(2, (new BigDecimal(amount).multiply(new BigDecimal(result))).setScale(2,
-							BigDecimal.ROUND_HALF_UP));
-					pstmt.setBigDecimal(3, new BigDecimal(amount));
-					pstmt.setBigDecimal(4, new BigDecimal(amount));
-					pstmt.setBigDecimal(5, new BigDecimal(amount));
-					break;
-				case 5:
-					pstmt.setBigDecimal(1, (new BigDecimal(amount)).setScale(2,
-							BigDecimal.ROUND_HALF_UP));
-					pstmt.setBigDecimal(2, (new BigDecimal(amount).multiply(new BigDecimal(result))).setScale(2,
-							BigDecimal.ROUND_HALF_UP));
-					pstmt.setBigDecimal(3, new BigDecimal(amount));
-					pstmt.setBigDecimal(4, new BigDecimal(amount));
-					pstmt.setBigDecimal(5, new BigDecimal(amount));
-					break;
-				case 6:
-					pstmt.setBigDecimal(1, (new BigDecimal(amount)).setScale(2,
-							BigDecimal.ROUND_HALF_UP));
-					pstmt.setBigDecimal(2, (new BigDecimal(amount).multiply(new BigDecimal(result))).setScale(2,
-							BigDecimal.ROUND_HALF_UP));
-					pstmt.setBigDecimal(3, new BigDecimal(amount));
-					pstmt.setBigDecimal(4, new BigDecimal(amount));
-					pstmt.setBigDecimal(5, new BigDecimal(amount));
-					break;
-				case 7:
-					pstmt.setBigDecimal(1, (new BigDecimal(amount)).setScale(2,
-							BigDecimal.ROUND_HALF_UP));
-					pstmt.setBigDecimal(2, (new BigDecimal(amount).multiply(new BigDecimal(result))).setScale(2,
-							BigDecimal.ROUND_HALF_UP));
-					pstmt.setBigDecimal(3, new BigDecimal(amount));
-					pstmt.setBigDecimal(4, new BigDecimal(amount));
-					pstmt.setBigDecimal(5, new BigDecimal(amount));
-					break;
-				case 8:
-					pstmt.setBigDecimal(1, (new BigDecimal(amount)).setScale(2,
-							BigDecimal.ROUND_HALF_UP));
-					pstmt.setBigDecimal(2, (new BigDecimal(amount).multiply(new BigDecimal(result))).setScale(2,
-							BigDecimal.ROUND_HALF_UP));
-					pstmt.setBigDecimal(3, new BigDecimal(amount));
-					pstmt.setBigDecimal(4, new BigDecimal(amount));
-					pstmt.setBigDecimal(5, new BigDecimal(amount));
-					break;
-				default:
-					break;
-				}
+
+				// 期数
+				String nper = cred.getNper();
+				String result = nper.replaceAll("期", "");
+				// 费率
+				String rate = cred.getRate();
+				String resultrate = rate.replace("%", "");
+				// 每期本金
+				pstmt.setBigDecimal(1,
+						(new BigDecimal(amount)).divide(new BigDecimal(result), 2, BigDecimal.ROUND_HALF_UP));
+				// 单期手续费
+				pstmt.setBigDecimal(2,
+						(new BigDecimal(amount).multiply(new BigDecimal(resultrate).divide(new BigDecimal(multiple))))
+								.setScale(2, BigDecimal.ROUND_HALF_UP));
+				// 本金+手续费
+				pstmt.setBigDecimal(3,
+						(new BigDecimal(amount)).divide(new BigDecimal(result), 2, BigDecimal.ROUND_HALF_UP)
+								.add((new BigDecimal(amount)
+										.multiply(new BigDecimal(resultrate).divide(new BigDecimal(multiple))))
+												.setScale(2, BigDecimal.ROUND_HALF_UP)));
+				// 每日手续费
+				BigDecimal Daily_handling_charge = new BigDecimal(amount)
+						.multiply((new BigDecimal(resultrate).divide(new BigDecimal(multiple))));
+
+				pstmt.setBigDecimal(4, Daily_handling_charge.divide(new BigDecimal(days), 2, BigDecimal.ROUND_HALF_UP));
+				// 总手续费
+				pstmt.setBigDecimal(5,
+						(new BigDecimal(amount).multiply(new BigDecimal(resultrate).divide(new BigDecimal(multiple))))
+								.setScale(2, BigDecimal.ROUND_HALF_UP).multiply(new BigDecimal(result)));
+
 				pstmt.executeUpdate();
 				pstmt.close();
 				conn.Connetcion().close();
 			}
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}
