@@ -26,6 +26,8 @@
 	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/spring-tx-3.2.8.RELEASE.jar"/>
 	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/spring-web-3.2.8.RELEASE.jar"/>
 	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/spring-webmvc-3.2.8.RELEASE.jar"/>
+	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/javacsv-2.1.jar"/>
+	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/redmine-java-api-3.0.1.jar"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
 	<classpathentry kind="output" path="build/classes"/>
 </classpath>

@@ -37,6 +37,7 @@ public class getcreditCard extends HttpServlet {
 		// TODO Auto-generated method stub
 		request.setCharacterEncoding("utf-8");
 		response.setCharacterEncoding("utf-8");
+		System.out.println(request.getParameter("nper"));
 		try {
 			getCreditCard.calculate(request.getParameter("amount"));
 			List<creditCard> list = getCreditCard.getCreditCardinfo();// 获得指定页数据

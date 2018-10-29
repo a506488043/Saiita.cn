@@ -13,9 +13,9 @@ public class JDBC {
 	String utf8 = "?useUnicode=true&characterEncoding=utf8";
 	private String url = "jdbc:mysql://39.105.51.6:3306/" + database+utf8;
 	private String Ubuntu = "jdbc:mysql://localhost:3306/" + database+utf8;
-	private String username = "saiita";
-	private String UbuntuPwd = "saiita";
-	private String password = "BQKgJlKOSnVXJYwF";
+	private String username = "root";
+	private String UbuntuPwd = "root";
+	private String password = "61810cyc@";
 	Connection conn;
 
 	public Connection getConnection() {

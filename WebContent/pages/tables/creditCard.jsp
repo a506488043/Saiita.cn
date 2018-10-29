@@ -51,8 +51,14 @@
 				</div>
 				<div class="box-body">
 					<div>
-						<input type="text" placeholder="输入金额" id="amount">
-						<button type="submit" onclick="rs();" id="button" name="">计算</button>
+						<label><input type="text" placeholder="输入金额" id="amount"
+							class="form-control input-sm"></label>
+						<button type="submit" onclick="rs();"
+							class="btn btn-info btn-primary btn-sm">计算</button>
+						<label><input type="text" placeholder="输入期数" id="nper"
+							class="form-control input-sm"></label>
+						<button type="submit" onclick="nper();" id="nper"
+							class="btn btn-info btn-primary btn-sm">确定</button>
 					</div>
 					<table id="example2" class="table table-bordered table-striped">
 						<thead>
@@ -69,20 +75,6 @@
 							</tr>
 						</thead>
 					</table>
-					<table id="example1" class="table table-bordered table-striped">
-				<thead>
-					<tr>
-						<th>编号</th>
-						<th>项目</th>
-						<th>总支出数</th>
-						<th>总支出(元)</th>
-						<th>总收入数</th>
-						<th>总收入(元)</th>
-						<th>信用卡/网商/京东/花呗</th>
-						<th>逆差</th>
-					</tr>
-				</thead>
-			</table>
 				</div>
 				<!-- /.box-body -->
 			</div>
@@ -111,38 +103,15 @@
 	<!-- AdminLTE for demo purposes -->
 	<script src="../../dist/js/demo.js"></script>
 	<!-- page script -->
-	<script>
-		$(function() {
-			$('#example1').DataTable({
-				"paging" : false,
-				"lengthChange" : false,
-				"searching" : false,
-				"ordering" : false,
-				"info" : false,
-				"autoWidth" : false,
+	<script type="text/javascript">
+		function nper() {
+			$('#nper'){
 				ajax : {
-					url : 'getTotalSpending',
-					dataSrc : ''
-				},
-				columns : [ {
-					data : 'id'
-				}, {
-					data : 'projects'
-				}, {
-					data : 'totalDisbursement'
-				}, {
-					data : 'totalExpenditure'
-				}, {
-					data : 'totalRevenue'
-				}, {
-					data : 'grossIncome'
-				}, {
-					data : 'creditCardOverdraft'
-				}, {
-					data : 'deficit'
-				}  ]
-			});
-		});
+					url : 'getcreditCard?nper='+$('#nper').val();
+					type : 'get';
+				}
+			}
+		}
 	</script>
 	<script>
 		function rs() {
@@ -169,12 +138,11 @@
 				},
 
 				//"columnDefs" : [ {
-				//	"targets" : 0,//这一列是id，但是不想再前端显示，"visible": false,表示隐藏
-				//	"visible" : true,
-				//}, {
-				//	targets : 0,//把第九列的样式改为超链接
+				//	data : "id",
+				//	targets : 8,//把第8列的样式改为超链接
+				//	width : "10%",
 				//	render : function(data, type, row) {
-				//		return '<input type="text" value="******" id="password">';
+				//		return '<td><button type="button" onclick="button();" class="btn btn-info btn-primary btn-sm" value="'+data+'">确定</button></td>';
 				//	}
 				//} ],
 				columns : [ {
