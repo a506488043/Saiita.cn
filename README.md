@@ -9,3 +9,5 @@
 3:获取IP，获取浏览器类型
 
 4:datatables
+
+5:redmine 版本： 3.4.6.devel,redmine api不支持。

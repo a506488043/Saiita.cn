@@ -12,9 +12,9 @@ import com.taskadapter.redmineapi.bean.Issue;
 
 public class Test {
 	public static void main(String[] args) throws SQLException, RedmineException {
-	    String uri = "";
-	    String apiAccessKey = "";
-	    String projectKey = "";
+	    String uri = "http://redmine.ptq.com";
+	    String apiAccessKey = "c7ffc0e1d8a8006f615dc3b9c7c0747a4fa9c478";
+	    String projectKey = "ptq";
 	    Integer queryId = null; // any
 
 	    RedmineManager mgr = RedmineManagerFactory.createWithApiKey(uri, apiAccessKey);
