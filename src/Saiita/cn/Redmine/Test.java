@@ -14,7 +14,7 @@ public class Test {
 		String apiAccessKey = "c7ffc0e1d8a8006f615dc3b9c7c0747a4fa9c478";
 		String projectKey = "ptq";
 		Integer queryId = null; // any
-
+ 
 		RedmineManager mgr = RedmineManagerFactory.createWithApiKey(uri, apiAccessKey);
 		// override default page size if needed
 		mgr.setObjectsPerPage(100);
