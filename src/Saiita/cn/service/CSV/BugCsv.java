@@ -1,42 +1,67 @@
 package Saiita.cn.service.CSV;
 
-import java.io.FileNotFoundException;
+import java.io.BufferedWriter;
+import java.io.FileOutputStream;
 import java.io.IOException;
-import java.nio.charset.Charset;
+import java.io.OutputStreamWriter;
+import java.sql.SQLException;
+import java.util.List;
 
-import com.csvreader.CsvReader;
-
-import Saiita.cn.entity.Bugs;
+import Saiita.cn.entity.RedmineBugs;
+import Saiita.cn.service.GetInfo.getRedmineBug;
 
 public class BugCsv {
-	public static void getBugs() throws IOException {
-		Bugs bug=null;
-		//生成CsvReader对象，以，为分隔符，GBK编码方式
-        CsvReader r;
-        String csvFilePath ="D:\\Bugs.csv";
-        try {
-			r=new CsvReader(csvFilePath,',',Charset.forName("UTF-8"));
-			r.readHeaders();
-			while(r.readRecord()) {
-				System.out.println(r.get("编号"));
-				System.out.println(r.get("跟踪"));
-				System.out.println(r.get("状态"));
-				System.out.println(r.get("优先级"));
-				System.out.println(r.get("主题"));
-				System.out.println(r.get("作者"));
-				System.out.println(r.get("指派给"));
-				System.out.println(r.get("%完成"));
-				System.out.println(r.get("开始日期"));
-				System.out.println(r.get("更新于"));
-				System.out.println(r.get("目标版本"));
+	public static boolean getBugs(List<RedmineBugs> dataList) throws IOException {
+		boolean isSucess = false;
+		FileOutputStream out = null;
+		OutputStreamWriter osw = null;
+		BufferedWriter bw = null;
+		try {
+			out = new FileOutputStream("D:\\质量报表\\PTQ.csv");
+			osw = new OutputStreamWriter(out);
+			if (dataList != null && !dataList.isEmpty()) {
+				for (RedmineBugs data : dataList) {
+					bw.append(data).append("\r");
+				}
 			}
-		} catch (FileNotFoundException e) {
-			// TODO Auto-generated catch block
-			System.out.println("读取"+csvFilePath+"异常");
-			e.printStackTrace();
+			isSucess = true;
+		} catch (Exception e) {
+			// TODO: handle exception
+			isSucess = false;
+		} finally {
+			if (bw != null) {
+				try {
+					bw.close();
+					bw = null;
+				} catch (Exception e2) {
+					// TODO: handle exception
+					e2.printStackTrace();
+				}
+				if(osw!=null) {
+					try {
+						osw.close();
+						osw =null;
+					}catch(Exception e3){
+						e3.printStackTrace();
+					}
+				if(out!=null) {
+					try {
+						out.close();
+						out=null;
+					} catch (Exception e4) {
+						// TODO: handle exception
+						e4.printStackTrace();
+					}
+				}
+				}
+				
+			}
+			
 		}
+		return isSucess;
 	}
-	public static void main(String[] args) throws IOException {
-		getBugs() ;
+
+	public static void main(String[] args) throws IOException, SQLException {
+		System.out.println(getBugs(getRedmineBug.getDaysInfo()));
 	}
 }

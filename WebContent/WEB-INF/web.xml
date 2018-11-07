@@ -3,8 +3,16 @@
   <welcome-file-list>
     <welcome-file>login.jsp</welcome-file>
   </welcome-file-list>
-  
     <servlet>
+    <servlet-name>getTheBugDayReport</servlet-name>
+    <servlet-class>Saiita.cn.action.getTheBugDayReport</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>getTheBugDayReport</servlet-name>
+    <url-pattern>/getTheBugDayReport.do</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
     <servlet-name>getcreditCard</servlet-name>
     <servlet-class>Saiita.cn.action.getcreditCard</servlet-class>
   </servlet>
@@ -12,7 +20,6 @@
     <servlet-name>getcreditCard</servlet-name>
     <url-pattern>/getcreditCard.do</url-pattern>
   </servlet-mapping>
-  
   <servlet>
     <servlet-name>LoginPost</servlet-name>
     <servlet-class>Saiita.cn.action.LoginPost</servlet-class>

@@ -3,13 +3,14 @@ package Saiita.cn.JDBC;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
+
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 
-public class JDBC {
+public class RedmineJDBC {
 	public static Log logger = LogFactory.getLog(JDBC.class);
 	// MySQLµÄÊý¾Ý¿â
-	String database = "saiita.cn";
+	String database = "BUG";
 	String utf8 = "?useUnicode=true&characterEncoding=utf8";
 	private String url = "jdbc:mysql://39.105.51.6:3306/" + database+utf8;
 	private String Ubuntu = "jdbc:mysql://localhost:3306/" + database+utf8;
