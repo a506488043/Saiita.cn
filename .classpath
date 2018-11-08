@@ -10,7 +10,6 @@
 	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/jackson-annotations-2.4.1.jar"/>
 	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/javax.servlet-api-3.0.1.jar"/>
 	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/log4j.jar"/>
-	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/mysql-connector-java-5.1.17-bin.jar"/>
 	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/servlet-api.jar"/>
 	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/spring-aop-3.2.8.RELEASE.jar"/>
 	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/spring-aspects-3.2.8.RELEASE.jar"/>
@@ -23,7 +22,6 @@
 	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/spring-web-3.2.8.RELEASE.jar"/>
 	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/spring-webmvc-3.2.8.RELEASE.jar"/>
 	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/javacsv-2.1.jar"/>
-	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/redmine-java-api-3.0.1.jar"/>
 	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/webcam-capture-0.3.10-RC6.jar"/>
 	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/bridj-0.7-20131007.003529-54.jar"/>
 	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/commons-lang-2.5.jar"/>
@@ -43,6 +41,7 @@
 	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/httpmime-4.5.jar"/>
 	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/jna-4.1.0.jar"/>
 	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/jna-platform-4.1.0.jar"/>
+	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/mysql-connector-java-5.1.42-bin.jar"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
 	<classpathentry kind="output" path="build/classes"/>
 </classpath>

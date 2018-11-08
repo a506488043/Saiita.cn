@@ -16,8 +16,6 @@ import Saiita.cn.entity.RedmineBugs;
  * @author www.saiita.cn 获取Python统计的数据。
  */
 public class getRedmineBug {
-	static RedmineJDBC jdbc = new RedmineJDBC();
-	static Connection getConnetcion = (Connection) jdbc.getConnection();
 	static String sql = "";
 
 	public static void main(String[] args) throws SQLException {
@@ -29,7 +27,10 @@ public class getRedmineBug {
 		}
 	}
 
+	// 从Redmine收集Bug数据。
 	public static List<RedmineBugs> getBugsInfo() throws SQLException {
+		RedmineJDBC jdbc = new RedmineJDBC();
+		Connection getConnetcion = (Connection) jdbc.getConnection();
 		sql = "SELECT*FROM Bugs";
 		PreparedStatement pstmt;
 		List<RedmineBugs> bug = new ArrayList<RedmineBugs>();
@@ -55,32 +56,32 @@ public class getRedmineBug {
 		return bug;
 	}
 
+	// 日Bug数量统计
 	public static List<RedmineBugs> getDaysInfo() throws SQLException {
+		RedmineJDBC jdbc = new RedmineJDBC();
+		Connection getConnetcion = (Connection) jdbc.getConnection();
 		sql = "SELECT*FROM The_BUG_days_report";
 		PreparedStatement pstmt;
 		List<RedmineBugs> bug = new ArrayList<RedmineBugs>();
 		pstmt = getConnetcion.prepareStatement(sql);
 		ResultSet rs;
-		try {
-			rs = pstmt.executeQuery();
-			while (rs.next()) {
-				RedmineBugs info = new RedmineBugs();
-				info.setDays(rs.getString("days"));
-				info.setTimes(rs.getString("times"));;
-				bug.add(info);
-			}
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-			pstmt.close();
-			getConnetcion.close();
+		rs = pstmt.executeQuery();
+		while (rs.next()) {
+			RedmineBugs info = new RedmineBugs();
+			info.setDays(rs.getString("days"));
+			info.setTimes(rs.getString("times"));
+			;
+			bug.add(info);
 		}
 		pstmt.close();
 		getConnetcion.close();
 		return bug;
 	}
 
+	// 周
 	public static List<RedmineBugs> getWeeksInfo() throws SQLException {
+		RedmineJDBC jdbc = new RedmineJDBC();
+		Connection getConnetcion = (Connection) jdbc.getConnection();
 		sql = "The_BUG_weeks_report";
 		PreparedStatement pstmt;
 		List<RedmineBugs> bug = new ArrayList<RedmineBugs>();
@@ -97,7 +98,10 @@ public class getRedmineBug {
 		return bug;
 	}
 
+	// 月
 	public static List<RedmineBugs> getMonthsInfo() throws SQLException {
+		RedmineJDBC jdbc = new RedmineJDBC();
+		Connection getConnetcion = (Connection) jdbc.getConnection();
 		sql = "The_BUG_month_report";
 		PreparedStatement pstmt;
 		List<RedmineBugs> bug = new ArrayList<RedmineBugs>();
@@ -115,7 +119,10 @@ public class getRedmineBug {
 		return bug;
 	}
 
+	// 年
 	public static List<RedmineBugs> getYearsInfo() throws SQLException {
+		RedmineJDBC jdbc = new RedmineJDBC();
+		Connection getConnetcion = (Connection) jdbc.getConnection();
 		sql = "The_BUG_year_report";
 		PreparedStatement pstmt;
 		List<RedmineBugs> bug = new ArrayList<RedmineBugs>();

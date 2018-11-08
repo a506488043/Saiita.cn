@@ -9,7 +9,7 @@
   </servlet>
   <servlet-mapping>
     <servlet-name>getTheBugDayReport</servlet-name>
-    <url-pattern>/getTheBugDayReport.do</url-pattern>
+    <url-pattern>/pages/tables/getTheBugDayReport.do</url-pattern>
   </servlet-mapping>
   
   <servlet>
