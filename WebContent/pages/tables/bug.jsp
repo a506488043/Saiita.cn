@@ -43,7 +43,7 @@
 				success : function(jsonData) {
 					$.each(jsonData, function(n, value) {
 						xdata.push(value.days);
-						ydata.push(value.times.append("个"));
+						ydata.push(value.times);
 					});
 					myChart.setOption({
 						xAxis : {
