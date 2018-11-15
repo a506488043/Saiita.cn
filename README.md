@@ -11,3 +11,5 @@
 4:datatables
 
 5:redmine 版本： 3.4.6.devel,redmine api不支持。
+
+6:页面部分汉化
