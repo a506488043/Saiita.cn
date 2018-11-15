@@ -29,7 +29,6 @@ public class LogRecord {
 
 	public void log(String name, String browserType, String ip, String result, String operation, String safelog)
 			throws SQLException {
-		
 		logrecorc(name, GetSystemTime.GetSyetemTimes(), result, operation, safelog, ip,
 				getBrowser.getBrowserName(browserType), browserType);
 	}
