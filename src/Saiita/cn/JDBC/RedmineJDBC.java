@@ -9,35 +9,35 @@ import org.apache.commons.logging.LogFactory;
 
 public class RedmineJDBC {
 	public static Log logger = LogFactory.getLog(JDBC.class);
-	// MySQLµÄÊı¾İ¿â
+	// MySQLçš„æ•°æ®åº“
 	String database = "BUG";
 	String utf8 = "?useUnicode=true&characterEncoding=utf8";
 	private String url = "jdbc:mysql://39.105.51.6:3306/" + database+utf8;
 	private String Ubuntu = "jdbc:mysql://localhost:3306/" + database+utf8;
 	private String username = "root";
 	private String UbuntuPwd = "root";
-	private String password = "*************@@";
+	private String password = "**************@@";
 	Connection conn;
 
 	public Connection getConnection() {
 		try {
 			Class.forName("com.mysql.jdbc.Driver");
-			logger.info("Êı¾İ¿â¼ÓÔØ³É¹¦");
+			logger.info("æ•°æ®åº“åŠ è½½æˆåŠŸ");
 		} catch (Exception e) {
-			logger.error("Êı¾İ¿â¼ÓÔØÊ§°Ü" + "/n" + e);
+			logger.error("æ•°æ®åº“åŠ è½½å¤±è´¥" + "/n" + e);
 		}
 		try {
 			conn = DriverManager.getConnection(url, username, password);
-			logger.info("·½Ê½1£ºÊı¾İ¿â¼ÓÔØ³É¹¦");
+			logger.info("æ–¹å¼1ï¼šæ•°æ®åº“åŠ è½½æˆåŠŸ");
 		} catch (SQLException e) {
 			try {
-				logger.info("·½Ê½1£ºÁ¬½ÓÊı¾İ¿âÊ§°Ü£¬³¢ÊÔÁ¬½Ó·½Ê½2.");
+				logger.info("æ–¹å¼1ï¼šè¿æ¥æ•°æ®åº“å¤±è´¥ï¼Œå°è¯•è¿æ¥æ–¹å¼2.");
 				conn = DriverManager.getConnection(Ubuntu, username, UbuntuPwd);
-				logger.info("·½Ê½2Á¬½ÓÊı¾İ¿â³É¹¦£¡");
+				logger.info("æ–¹å¼2è¿æ¥æ•°æ®åº“æˆåŠŸï¼");
 			} catch (SQLException e1) {
 				// TODO Auto-generated catch block
-				logger.error("·½Ê½1£ºÁ¬½ÓÊ§°Ü" + "/n" + "·½Ê½2£ºÁ¬½ÓÊ§°Ü");
-				logger.error("Çë¼ì²éÁ¬½ÓÊı¾İ¿âÕËºÅ£¬IP£¬¶Ë¿ÚÊÇ·ñÕıÈ·£¡");
+				logger.error("æ–¹å¼1ï¼šè¿æ¥å¤±è´¥" + "/n" + "æ–¹å¼2ï¼šè¿æ¥å¤±è´¥");
+				logger.error("è¯·æ£€æŸ¥è¿æ¥æ•°æ®åº“è´¦å·ï¼ŒIPï¼Œç«¯å£æ˜¯å¦æ­£ç¡®ï¼");
 				logger.error(e1);
 			}
 		}
