@@ -16,7 +16,7 @@ public class RedmineJDBC {
 	private String Ubuntu = "jdbc:mysql://localhost:3306/" + database+utf8;
 	private String username = "root";
 	private String UbuntuPwd = "root";
-	private String password = "61810cyc@@";
+	private String password = "*************@@";
 	Connection conn;
 
 	public Connection getConnection() {
