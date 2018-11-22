@@ -6,7 +6,6 @@ public class getConnetcion {
 	static JDBC jdbc = new JDBC();
 
 	public Connection Connetcion() {
-		System.out.println("getConnetcion");
 		Connection getConnetcion = (Connection) jdbc.getConnection();
 		return getConnetcion;
 	}
