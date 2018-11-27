@@ -3,15 +3,14 @@
   <welcome-file-list>
     <welcome-file>login.jsp</welcome-file>
   </welcome-file-list>
-    <servlet>
-    <servlet-name>getTheBugDayReport</servlet-name>
-    <servlet-class>Saiita.cn.action.getTheBugDayReport</servlet-class>
+  <servlet>
+    <servlet-name>getRsaPublicKey</servlet-name>
+    <servlet-class>Saiita.cn.action.getRsaPublicKey</servlet-class>
   </servlet>
   <servlet-mapping>
-    <servlet-name>getTheBugDayReport</servlet-name>
-    <url-pattern>/pages/tables/getTheBugDayReport.do</url-pattern>
+    <servlet-name>getRsaPublicKey</servlet-name>
+    <url-pattern>/getRsaPublicKey.do</url-pattern>
   </servlet-mapping>
-  
   <servlet>
     <servlet-name>getcreditCard</servlet-name>
     <servlet-class>Saiita.cn.action.getcreditCard</servlet-class>

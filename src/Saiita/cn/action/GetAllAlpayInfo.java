@@ -50,7 +50,7 @@ public class GetAllAlpayInfo extends HttpServlet {
 		try {
 			List<alipayInfo> list = getAllAlpayInfo.getAllAlpay();//获得指定页数据
 			JSONArray getAllAlpayInfo = JSONArray.fromObject(list);
-			 response.getWriter().println(getAllAlpayInfo);
+			response.getWriter().println(getAllAlpayInfo);
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

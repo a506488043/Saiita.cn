@@ -54,8 +54,7 @@
 				</div>
 				<div class="form-group has-feedback">
 					<input type="password" class="form-control" placeholder="密码"
-						id="password"> 
-						<input type="hidden" id="pwd"
+						id="password"> <input type="hidden" id="pwd"
 						name="user_psw">
 				</div>
 				<div class="row">
@@ -72,6 +71,7 @@
 		<script type="text/javascript">
 			function rsalogin() {
 				bodyRSA();
+				alert("3");
 				var password = $("#password").val();
 				var rsaPwd = encryptedString(key, password);
 				//alert(rsaPwd);
@@ -79,11 +79,22 @@
 			}
 			var key;
 			function bodyRSA() {
-				setMaxDigits(130);
-				key = new RSAKeyPair(
-						"10001",
-						"",
-						"9f1609efea2e02857d0a1124a7a219ba14571b4fa4372f28247f66e9dcbaa0fd5d0ae54e6507e82263f6567477dc09aa45c6a904d5a877adbab48eade13706ef61b48e55b965bb2cdc1be5aa1ca4eebd429ef484cd7f966930367ce9cbb419280d81f90c04d7b177408d12c65c8ab5494b0c2c2c7e7aa7f0c1f9f4f8f25869c7");
+				$.ajax({
+					type : 'get',
+					url : '/getRsaPublicKey.do',
+					dataType : "json",
+					success : function(data) {
+						alert("1");
+						$.each(data, function(n, value) {
+							alert(value.publicKey);
+							setMaxDigits(130);
+							key = new RSAKeyPair("10001", "", value.publicKey);
+						});
+					},
+					error : function(errorMsg) {
+						alert("2");
+					}
+				});
 			}
 		</script>
 	</form>

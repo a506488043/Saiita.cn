@@ -66,6 +66,7 @@ public class LoginPost extends HttpServlet {
 						"1");
 				response.sendRedirect("login.jsp");
 			} else {
+				// 解密
 				RSA rsa = new RSA();
 				String pwd = rsa.getPrivateKey(password);
 				// 与数据库的账号核对密码，并返回结果

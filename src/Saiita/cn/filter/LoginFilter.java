@@ -42,13 +42,13 @@ public class LoginFilter implements Filter {
 				|| url.endsWith(".json") || url.endsWith("yarn.lock") || url.endsWith("login.jsp")
 				|| url.endsWith("pages") || url.endsWith("bootstrap") || url.endsWith("RSADecryption")
 				|| url.endsWith("pk") || url.endsWith(".min.css") || url.endsWith(".min.js")
-				|| url.endsWith("/bootstrap/css/bootstrap.min.css")) {
+				|| url.endsWith("/bootstrap/css/bootstrap.min.css") || url.endsWith("getRsaPublicKey.do")) {
 			logger.info("请求路径：" + url);
 			// 满足条件就继续执行
 			if (result != null && "Success".equals(result)) {
 				logger.info("登陆验证通过,,前端登陆校验结果:" + result);
 			} else {
-				logger.info("登陆验证不通过(登陆失败),用户或密码密码错误");
+				logger.info("登陆验证不通过(登陆失败),用户没登陆！");
 			}
 			chain.doFilter(request, response);
 		} else {

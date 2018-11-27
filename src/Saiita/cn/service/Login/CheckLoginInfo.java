@@ -22,9 +22,10 @@ public class CheckLoginInfo {
 	@SuppressWarnings("resource")
 	public static String checkLogin(String username, String password, String ip, String Agent) throws SQLException {
 		logger.info("登陆日志验证!");
+		System.out.println("----------------");
+		System.out.println(password);
+		System.out.println("----------------");
 		String browser = getBrowser.getBrowserName(Agent);
-		// 用户输入账号参数安全校验
-		String[] value = { username, password };
 		// 连接数据库
 		Connection getConnetcion = (Connection) jdbc.getConnection();
 		// 输入用户名查询密码等信息
@@ -41,7 +42,7 @@ public class CheckLoginInfo {
 			// 返回结果集
 			ResultSet rs = pstmt.executeQuery();
 			if (rs.next()) {
-				// 获得密码
+				// 从数据库获得密码
 				String checkPasswd = rs.getString("password");
 				// 查询的密码和输入的密码对比，正确的进入
 				if (checkPasswd.equals(password) || password.equals(checkPasswd)) {

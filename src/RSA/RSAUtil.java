@@ -213,18 +213,16 @@ public class RSAUtil {
 
 	public static void main(String[] args) throws Exception {
 		generateKeyPair();
-		String test = "123456";
+		String test = "61810cyc@@";
 		// getKeyPair().getPublic()获取公密钥进行加密
 		byte[] en_test = encrypt(getKeyPair().getPublic(), test.getBytes());
+		System.out.println(encrypt(getKeyPair().getPublic(), test.getBytes()));
 		System.out.println(getKeyPair().getPublic());
-		System.out.println(new String(en_test));
-		// getKeyPair().getPrivate()获取私密钥进行解密
+		//System.out.println(new String(en_test));
+		//getKeyPair().getPrivate();//获取私密钥进行解密
 		byte[] de_test = decrypt(getKeyPair().getPrivate(), en_test);
-		System.out.println(
-				"----------------------------------------------------------------------------------------------");
-		System.out.println(new String(de_test));
-
-		System.out.println(getKeyPair().getPrivate());
-		System.out.println(new String(de_test));
+		//System.out.println(new String(de_test));
+		//System.out.println(getKeyPair().getPrivate());
+		//System.out.println(new String(de_test));
 	}
 }
