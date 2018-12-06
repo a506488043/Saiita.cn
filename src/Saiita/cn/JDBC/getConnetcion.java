@@ -9,5 +9,7 @@ public class getConnetcion {
 		Connection getConnetcion = (Connection) jdbc.getConnection();
 		return getConnetcion;
 	}
-
+public static void main(String[] args) {
+	Connection getConnetcion = (Connection) jdbc.getConnection();
+}
 }
