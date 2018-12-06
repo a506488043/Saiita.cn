@@ -10,12 +10,12 @@ public class JDBC {
 	public static Log logger = LogFactory.getLog(JDBC.class);
 	// MySQL
 	String database = "saiita.cn";
-	String utf8 = "?useUnicode=true&characterEncoding=utf8";
+	String utf8 = "?useUnicode=true&characterEncoding=utf8&autoReconnect=true&useSSL=true";
 	private String url = "jdbc:mysql://39.105.51.6:3306/" + database+utf8;
 	private String Ubuntu = "jdbc:mysql://localhost:3306/" + database+utf8;
-	private String username = "test";
-	private String UbuntuPwd = "test";
-	private String password = "123456";
+	private String username = "saiita.cn";
+	private String UbuntuPwd = "saiita.cn";
+	private String password = "enEgNdEh7uZKB8zJ";
 	Connection conn;
 
 	public Connection getConnection() {

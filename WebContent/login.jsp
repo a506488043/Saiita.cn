@@ -79,22 +79,11 @@
 			}
 			var key;
 			function bodyRSA() {
-				$.ajax({
-					type : 'get',
-					url : '/getRsaPublicKey.do',
-					dataType : "json",
-					success : function(data) {
-						alert("1");
-						$.each(data, function(n, value) {
-							alert(value.publicKey);
-							setMaxDigits(130);
-							key = new RSAKeyPair("10001", "", value.publicKey);
-						});
-					},
-					error : function(errorMsg) {
-						alert("2");
-					}
-				});
+				setMaxDigits(130);
+				key = new RSAKeyPair(
+						"10001",
+						"","9a9dca0df41ea414ed9112464cbf67a11d5c07a8f1f819158790acf05b0ae95fea3fd145213ca1b3d45249f5726fb7bddf84e6821292bcad0d00cea92e7486c07d8c307a61f1520276b9986e6d746ba5c776b823fda7b62cb01fdb9e920c9b3c2ffaf684a4eee3338157556a0cb5f30579960130652cf25ffe2f894ef6d5e8bb"
+						)
 			}
 		</script>
 	</form>
