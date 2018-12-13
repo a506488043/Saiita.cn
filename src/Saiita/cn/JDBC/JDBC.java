@@ -10,15 +10,15 @@ public class JDBC {
 	public static Log logger = LogFactory.getLog(JDBC.class);
 	// MySQL
 	String database = "saiita.cn";
-	String utf8 = "&useUnicode=true&characterEncoding=utf8&autoReconnect=true&useSSL=true";
+	//String utf8 = "&useUnicode=true&characterEncoding=utf8&autoReconnect=true&useSSL=false";
+	String utf8 = "?useUnicode=true&characterEncoding=utf8";
 	private String url = "jdbc:mysql://39.105.51.6:3306/" + database+utf8;
 	private String Ubuntu = "jdbc:mysql://localhost:3306/" + database+utf8;
-	private String username = "saiita.cn";
-	private String UbuntuPwd = "saiita.cn";
-	private String password = "enEgNdEh7uZKB8zJ";
+	private String username = "saiita";
+	private String UbuntuPwd = "saiita";
+	private String password = "IMPvNaBipm0RBEhC";
 	Connection conn;
 	public Connection getConnection() {
-		System.out.println(url);
 		try {
 			Class.forName("com.mysql.jdbc.Driver");
 		} catch (Exception e) {
@@ -26,6 +26,7 @@ public class JDBC {
 		}
 		try {
 			conn = DriverManager.getConnection(url, username, password);
+			logger.info("连接成功");
 		} catch (SQLException e) {
 			try {
 				conn = DriverManager.getConnection(Ubuntu, username, UbuntuPwd);
